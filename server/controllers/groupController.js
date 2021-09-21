@@ -9,7 +9,8 @@ return res.json(group)
     }
 
     async getAll(req, res) {
-
+const groups = await Group.findAll()
+return res.json(groups)
     }
 
     async getOne(req, res) {
