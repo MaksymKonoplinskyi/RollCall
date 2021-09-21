@@ -1,12 +1,11 @@
 const Router = require('express')
 const router = new Router()
+const studentController = require('../controllers/studentController')
 
-
-router.post('/registration',)
-router.post('/login',)
-router.get('/auth', (req, res) => {
-    res.json({message: 'ALL WORRING'})
-})
+router.post('/registration', studentController.registration)
+router.post('/login', studentController.login)
+router.get('/auth', studentController.check)
+ 
 
 
 module.exports = router
