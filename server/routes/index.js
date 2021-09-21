@@ -4,7 +4,7 @@ const groupRouter = require('./groupRouter')
 const rollCallRouter = require('./rollCallRouter')
 const studentRouter = require('./studentRouter')
 const teacherRouter = require('./teacherRouter')
-
+ 
 
 router.use('/student', studentRouter)
 router.use('/teacher', teacherRouter)

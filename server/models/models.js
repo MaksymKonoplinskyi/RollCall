@@ -21,7 +21,6 @@ const Teacher = sequelize.define('teacher', {
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
     email: { type: DataTypes.STRING, unique: true, },
-    //  pass: { type: DataTypes.STRING },
     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
 })
 
@@ -36,9 +35,10 @@ const Group = sequelize.define('group', {
 
 const RollCall = sequelize.define('rollCall', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+ //  groupId: { type: DataTypes.INTEGER, },
     date: { type: DataTypes.STRING, },
     time: { type: DataTypes.STRING, },
-    lessonNamber: { type: DataTypes.INTEGER, },
+    lessonNamber: { type: DataTypes.INTEGER, }, 
 })
 
 Student_RollCall = sequelize.define('student_rollCall', {
@@ -50,15 +50,15 @@ Student_Teacher = sequelize.define('student_teacher', {
 Teacher_Group = sequelize.define('teacher_group', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 })
-
-Teacher.hasMany(RollCall)
+ 
+Teacher.hasMany(RollCall)  
 RollCall.belongsTo(Teacher)
 
 Group.hasMany(Student)
 Student.belongsTo(Group)
 
 Group.hasMany(RollCall)
-RollCall.belongsTo(Group)
+RollCall.belongsTo(Group)  
 
 Student.belongsToMany(RollCall, { through: Student_RollCall })
 RollCall.belongsToMany(Student, { through: Student_RollCall })
