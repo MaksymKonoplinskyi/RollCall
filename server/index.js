@@ -13,6 +13,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport');
 const cookieSession = require('cookie-session')
 require('./passport-setup');
+const isLoggedIn = require ('./middleware/authMiddleware')
 
 
 const app = express()
@@ -31,13 +32,13 @@ app.use(cookieSession({
   }))
 
 // Auth middleware that checks if the user is logged in
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
+// const isLoggedIn = (req, res, next) => {
+//     if (req.user) {
+//         next();
+//     } else {
+//         res.sendStatus(401);
+//     }
+// }
 
 // Initializes passport and passport sessions
 app.use(passport.initialize());
