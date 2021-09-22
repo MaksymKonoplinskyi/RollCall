@@ -1,12 +1,16 @@
 
 .loginBlock {
-    float: right;
+    float:none;
 }
 
-.loginBlock a {
-    color: rgb(0, 4, 255);
+.loginBlock img {
+width: 500px;
 }
 
 .autorization {
     
+}
+
+.text {
+    font-size: 50;
 }

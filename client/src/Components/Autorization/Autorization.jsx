@@ -9,10 +9,12 @@ const Autorization = (props) => {
     return (
         <header className={s.autorization}>
             
-<div>Для начала нужно авторизироваться</div>
+<div className={s.text}>Для начала нужно авторизироваться</div>
 
             <div className={s.loginBlock}>
-                {props.isAuth ? props.login : <NavLink to={'/login'}><img src={signInPhoto} /></NavLink>}
+                {props.isAuth ? props.login : <NavLink to={'/login'}>
+                    <img src={signInPhoto} />
+                    </NavLink>}
 
 
             </div>
