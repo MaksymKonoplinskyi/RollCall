@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setAuthUserDataActionCreator } from '../../redux/auth-reduser';
 import Autorization from './Autorization';
 
 const mapStateToProps = (state) => {
@@ -13,12 +14,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updeteNewMessageText: (text) => {
-            // dispatch(updeteNewMessageTextActionCreator(text))
+        setAuthUserData: () => {
+         dispatch(setAuthUserDataActionCreator())
         },
-        addMessageText: () => {
-            // dispatch(addMessageActionCreator())
-        },
+        
     }
 }
 

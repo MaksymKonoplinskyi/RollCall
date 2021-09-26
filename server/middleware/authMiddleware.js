@@ -4,6 +4,8 @@ module.exports = function (reg, res, next) {
     } else {
         res.sendStatus(401);
     } 
+  //  req.user ? next() : res.sendStatus(401)
+
 }
 
 

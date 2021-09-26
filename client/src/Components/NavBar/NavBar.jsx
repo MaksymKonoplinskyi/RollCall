@@ -19,7 +19,7 @@ function NavBar() {
                 <NavLink to="/News" activeClassName={s.active}>News</NavLink>
             </div>
             <div className={s.item + ' ' + s.active}>
-                <NavLink to="/Music" activeClassName={s.active}>Music</NavLink>
+                <NavLink to="/autorization" activeClassName={s.active}>autorization</NavLink>
             </div>
             <div className={s.item + ' ' + s.active}>
                 <NavLink to="/Settings" activeClassName={s.active}>Settings</NavLink>
