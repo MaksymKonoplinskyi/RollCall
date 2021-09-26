@@ -9,7 +9,7 @@ const cors = require('cors')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5000 
 
 const bodyParser = require('body-parser')
 const passport = require('passport');
@@ -21,34 +21,36 @@ const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 }
 
-// const corsOptions = {
-//   // headers: {"Access-Control-Allow-Origin" :'http://localhost:3000'}
-//   headers: { "Access-Control-Allow-Origin": '*' }
-// }
- 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+  // headers: {"Access-Control-Allow-Origin" :'http://localhost:3000'}
+  // headers: { "Access-Control-Allow-Origin": '*' }
+} 
+
 
 
 
 const app = express()
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});  
-
-
-// app.all('/*', function(req, res, next) {
+// app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
 //   next();
-// });     
+// });
 
-//  app.use ('trust proxy', 'http://localhost:3000/') //trust first proxy 
 
-// app.use(cors())
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});      
+
+// app.use('trust proxy', 1) //trust first proxy   
+ 
+
 app.use(express.json())
 app.use('/api', router)
 // Access-Control-Allow-Origin: http://localhost:3000
@@ -76,20 +78,20 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+ 
 // Обработка шибок в конце
 app.use(errorHandler)
 
+app.use(cors(corsOptions))  
 
 
-
-
-
+ 
+  
 
 
 
 // Example protected and unprotected routes
-app.get('/', (req, res) => res.send('Example Home page! <a href="/google"> Authenticate with Google</a>'))
+app.get('/', cors(corsOptions), (req, res) => res.send('Example Home page! <a href="/google"> Authenticate with Google</a>'))
 // Auth Routes
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 

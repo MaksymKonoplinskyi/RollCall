@@ -9,11 +9,23 @@ import axios from 'axios';
 
 const Autorization = (props) => {
     let onAuthClick = (req, res) => {
-            return axios.get('http://localhost:5000/google', {
-                withCredentials: true
-            })
-            .then ((req, res) => {console.log(res);})
-        }
+        return axios.get('http://localhost:5000/google', {
+            withCredentials: true
+        })
+            .then((req, res) => { console.log(res); })
+    }
+    let onTestClick = (req, res) => {
+        return axios.get('http://localhost:5000/', {
+            withCredentials: true
+        })
+            .then((req, res) => { console.log(res); })
+    }
+    let onTesttClick = (req, res) => {
+        return axios.get('http://localhost:5000/api/student/auth', {
+            withCredentials: true
+        })
+            .then((req, res) => { console.log(res); })
+    }
     return (
         <header className={s.autorization}>
 
@@ -24,8 +36,15 @@ const Autorization = (props) => {
                 <div>
                     <button onClick={onAuthClick}>knopca</button>
                 </div>
+                <div>
+                    <button onClick={onTestClick}>TEST</button> 
+                </div>
+                <div>
+                    <button onClick={onTesttClick}>TEST2</button>
+                </div>
             </div>status auth `Welcome mr !` <div>
             </div>
+
         </header >
     )
 }
@@ -33,7 +52,7 @@ const Autorization = (props) => {
 export default Autorization
 
 {/* {props.isAuth ? props.login : <img onClick={onAuthClick ()} src={signInPhoto} /> */ }
-
+// http://localhost:5000/api/student/auth
 // getUsers = (currentPage = 2, pageSize = 10) => {
 //     return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
 //         withCredentials: true

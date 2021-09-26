@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from "redux";
-import authReduser from "./auth-reduser";
+import googleAuthReduser from "./google-auth-reduser";
 import dialogsReduser from "./dialogsReduser";
 import profileReduser from "./profileReduser";
 import sidebarReduser from "./sidebarReduser";
@@ -10,7 +10,7 @@ let redusers = combineReducers({
     dialogsPage: dialogsReduser,
     usersPage: usersReduser,
     sidebar: sidebarReduser,
-    auth: authReduser,
+    auth: googleAuthReduser,
 })
 
 let store = createStore(redusers);

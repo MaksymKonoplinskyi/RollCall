@@ -8,7 +8,7 @@ let initialState = {
     // imageURL: null,
     email: null,
     // idToken: null,
-    // isAuth: false,
+    isAuth: false,
    
 };
 
