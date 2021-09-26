@@ -10,19 +10,19 @@ import axios from 'axios';
 const Autorization = (props) => {
     let onAuthClick = (req, res) => {
         return axios.get('http://localhost:5000/google', {
-            withCredentials: true
+            // withCredentials: true
         })
             .then((req, res) => { console.log(res); })
     }
     let onTestClick = (req, res) => {
         return axios.get('http://localhost:5000/', {
-            withCredentials: true
+            // withCredentials: true
         })
             .then((req, res) => { console.log(res); })
     }
     let onTesttClick = (req, res) => {
         return axios.get('http://localhost:5000/api/student/auth', {
-            withCredentials: true
+            // withCredentials: true
         })
             .then((req, res) => { console.log(res); })
     }

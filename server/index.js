@@ -33,6 +33,7 @@ const corsOptions = {
 
 const app = express()
 
+app.use(cors(corsOptions)) 
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header(
@@ -43,10 +44,10 @@ const app = express()
 // });
 
 
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});      
+// app.all('/*', function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });      
 
 // app.use('trust proxy', 1) //trust first proxy   
  
@@ -82,7 +83,7 @@ app.use(passport.session());
 // Обработка шибок в конце
 app.use(errorHandler)
 
-app.use(cors(corsOptions))  
+ 
 
 
  
@@ -91,7 +92,7 @@ app.use(cors(corsOptions))
 
 
 // Example protected and unprotected routes
-app.get('/', cors(corsOptions), (req, res) => res.send('Example Home page! <a href="/google"> Authenticate with Google</a>'))
+app.get('/', (req, res) => res.send('Example Home page! <a href="/google"> Authenticate with Google</a>'))
 // Auth Routes
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 

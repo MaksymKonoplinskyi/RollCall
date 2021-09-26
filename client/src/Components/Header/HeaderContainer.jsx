@@ -6,21 +6,21 @@ import { setUserData } from '../../redux/google-auth-reduser'
 // import Outh from './../Outh/Outh';
 
 class HeaderContainer extends React.Component {
-    componentDidMount() {
-        axios.get(`http://localhost:5000/google`, {
-             withCredentials: true
-        })
-            .then(response => {
-                debugger
-                if (response.data.resultCode === 0) {
-                    let { id, email} = response.data.data;
-                    this.props.setUserData(id, email);
-                }
+    // componentDidMount() {
+    //     axios.get(`http://localhost:5001/google`, {
+    //          withCredentials: true
+    //     })
+    //         .then(response => {
+    //             debugger
+    //             if (response.data.resultCode === 0) {
+    //                 let { id, email} = response.data.data;
+    //                 this.props.setUserData(id, email);
+    //             }
 
-                // this.props.toggleIsFetching(false)
+    //             // this.props.toggleIsFetching(false)
 
-            })
-    }
+    //         })
+    // }
     render() {
         return <Header {...this.props} />
     }
