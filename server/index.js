@@ -1,8 +1,6 @@
 require('dotenv').config()
 
 const express = require('express')
-// const session = require("express-session")//////
-
 const seqelize = require('./db')
 const models = require('./models/models')
 const cors = require('cors')
@@ -24,37 +22,14 @@ const isLoggedIn = (req, res, next) => {
 const corsOptions = {
   origin: 'http://localhost:3000',
   optionsSuccessStatus: 200
-  // headers: {"Access-Control-Allow-Origin" :'http://localhost:3000'}
-  // headers: { "Access-Control-Allow-Origin": '*' }
 } 
 
-
-
-
 const app = express()
-
 app.use(cors(corsOptions)) 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
 
-
-// app.all('/*', function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   next();
-// });      
-
-// app.use('trust proxy', 1) //trust first proxy   
- 
 
 app.use(express.json())
 app.use('/api', router)
-// Access-Control-Allow-Origin: http://localhost:3000
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -66,14 +41,7 @@ app.use(cookieSession({
   keys: ['key1', 'key2']
 }))
 
-// Auth middleware that checks if the user is logged in
-// const isLoggedIn = (req, res, next) => {
-//     if (req.user) {
-//         next();
-//     } else {
-//         res.sendStatus(401);
-//     }
-// }
+
 // app.use(session({ secret: "cats" }));//// 
 // Initializes passport and passport sessions
 app.use(passport.initialize());
@@ -82,14 +50,7 @@ app.use(passport.session());
  
 // Обработка шибок в конце
 app.use(errorHandler)
-
  
-
-
- 
-  
-
-
 
 // Example protected and unprotected routes
 app.get('/', (req, res) => res.send('Example Home page! <a href="/google"> Authenticate with Google</a>'))
@@ -111,25 +72,12 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
     res.redirect('http://localhost:3000/'); //'/good'
   }
 );
-// app.get('/google/callback',
-//   passport.authenticate('google', {
-//     successRedirect: '/good',
-//     failureRedirect: '/auth/failed' 
-//   })
-// );
-
-
 
 app.get('/logout', (req, res) => {
   req.session = null;
   req.logout();
   res.redirect('/');
 })
-
-//app.listen(5000, () => console.log(`Example app listening on port ${5000}!`))
-
-
-
 
 
 const start = async () => {
