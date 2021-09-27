@@ -1,4 +1,5 @@
 const passport = require('passport');
+const models = require('./models/models')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.serializeUser(function (user, done) {
@@ -25,7 +26,8 @@ passport.use(new GoogleStrategy({
   callbackURL: "http://localhost:5000/google/callback",
   passReqToCallback: true /////
 },
-  function (request, accessToken, refreshToken, profile, done) {
+  function (accessToken, refreshToken, profile, done) {
+    console.log(profile); 
     /*
      use the profile info (mainly profile id) to check if the user is registerd in ur db
      If yes select the user and pass him to the done callback

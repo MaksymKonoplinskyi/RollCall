@@ -19,13 +19,13 @@ const isLoggedIn = (req, res, next) => {
   req.user ? next() : res.sendStatus(401);
 }
 
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200
-} 
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+//   optionsSuccessStatus: 200
+// } 
 
 const app = express()
-app.use(cors(corsOptions)) 
+app.use(cors()) 
 
 
 app.use(express.json())
@@ -70,6 +70,7 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
   function (req, res) {
     // Successful authentication, redirect home.
     res.redirect('http://localhost:3000/'); //'/good'
+    // res.send('You Failed to log in!');   
   }
 );
 
