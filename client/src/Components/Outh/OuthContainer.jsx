@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setUserGData } from '../../redux/google-auth-reduser';
-import Autorization from './Autorization';
+import Outh from './Outh';
 
 const mapStateToProps = (state) => {
     
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const AutorizationContainer = connect(mapStateToProps, mapDispatchToProps)(Autorization)
+const OuthContainer = connect(mapStateToProps, mapDispatchToProps)(Outh)
 
 
-export default AutorizationContainer
+export default OuthContainer
