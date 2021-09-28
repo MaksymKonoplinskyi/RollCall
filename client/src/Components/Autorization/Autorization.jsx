@@ -9,7 +9,6 @@ import OuthContainer from '../Outh/OuthContainer';
 // import Outh from './../Outh/Outh';
 
 const Autorization = (props) => {
-    debugger
     let onAuthClick = (req, res) => {
         return axios.get('http://localhost:5000/google', {
             // withCredentials: true

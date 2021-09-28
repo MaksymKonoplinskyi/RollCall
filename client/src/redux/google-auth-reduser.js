@@ -3,13 +3,17 @@ const SET_USER_DATA = 'SET_USER_DATA';
 
 
 let initialState = {
-    gUser: {
-        id: null,
-        name: null,
-        email: null,
-        avaUrl: null,
-        isAuth: false,
-    },
+    // gUser: {
+    //     id: null,
+    //     email: null,
+    //     name: null,
+    //     avaUrl: null,
+
+    // },
+    id: null,
+    email: null,
+    g_name: null,
+    avaUrl: null,
 
 
 
@@ -21,8 +25,10 @@ const googleAuthReduser = (state = initialState, action) => {
 
             return {
                 ...state,
-                ...action.data,
-                isAuth: true,
+                ...action.data
+                
+                // gUser: { ...state.gUser },
+                // isAuth: true,
             };
         case SET_USER_DATA:
 
@@ -36,7 +42,7 @@ const googleAuthReduser = (state = initialState, action) => {
             return state
     }
 }
-export const setUserGData = (id, email) => ({ type: SET_USER_G_DATA, data: { id, email } });
+export const setUserGData = (id, email, g_name, avaUrl) => ({ type: SET_USER_G_DATA, data: { id, email, g_name, avaUrl } });
 export const setUserData = (id, email) => ({ type: SET_USER_DATA, data: { id, email } });
 
 export default googleAuthReduser

@@ -21,13 +21,22 @@ class Outh extends React.Component {
 
   signIn = () => {
     const _authOk = googleUser => {
+      if (true) {
+        let gUser = {
+          id: googleUser.getBasicProfile().getId(),
+          email: googleUser.getBasicProfile().getEmail(),
+          g_name: googleUser.getBasicProfile().getName(),
+          avaUrl: googleUser.getBasicProfile().getImageUrl()
+        }
+        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl)
+      }
       this.setState({
-        id : googleUser.getBasicProfile().getId(),
-        name: googleUser.getBasicProfile().getName(),
+        id: googleUser.getBasicProfile().getId(),
         email: googleUser.getBasicProfile().getEmail(),
+        name: googleUser.getBasicProfile().getName(),
         avaUrl: googleUser.getBasicProfile().getImageUrl()
       })
-      
+
     }
     const _authErr = () => console.log('Auth Err')
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
@@ -35,7 +44,7 @@ class Outh extends React.Component {
     GooqleAuth.signIn({
       scope: 'profile email'
     }).then(_authOk, _authErr)
-  // }).then(user => console.log('Ok', user), _authErr)
+    // }).then(user => console.log('Ok', user), _authErr)
   }
 
   signOut = () => {
@@ -56,6 +65,7 @@ class Outh extends React.Component {
       <div className="Outh">
         {!name && <button onClick={this.signIn} >Log In</button>}
         {!!name && <p>Privet, {name}!</p>}
+        {!!name && <p>Privet, {this.props.gUser.g_name}!</p>}
         {!!name && <button onClick={this.signOut} >Log Out</button>}
       </div>
     )

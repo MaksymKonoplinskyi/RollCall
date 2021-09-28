@@ -4,9 +4,8 @@ import { setUserGData } from '../../redux/google-auth-reduser';
 import Outh from './Outh';
 
 const mapStateToProps = (state) => {
-    
-    return {
-        gUser: state.auth.gUser,
+        return {
+        gUser: state.auth,
         // dialogs: state.dialogsPage.dialogs,
         // messages: state.dialogsPage.messages,
         
@@ -15,8 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setAuthUserData: () => {
-         dispatch(setUserGData())
+        setUserGData: (id, email, g_name, avaUrl) => {
+         dispatch(setUserGData(id, email, g_name, avaUrl))
         },
         
     }
