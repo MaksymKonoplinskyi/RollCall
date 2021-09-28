@@ -2,13 +2,8 @@ import React from 'react';
 import './Outh.css';
 
 class Outh extends React.Component {
-  state = {
-    id: null,
-    name: null,
-    email: null,
-    avaUrl: null,
 
-  }
+
   componentDidMount() {
     window.gapi.load('auth2', function () {
       window.gapi.auth2
@@ -30,13 +25,6 @@ class Outh extends React.Component {
         }
         this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl)
       }
-      this.setState({
-        id: googleUser.getBasicProfile().getId(),
-        email: googleUser.getBasicProfile().getEmail(),
-        name: googleUser.getBasicProfile().getName(),
-        avaUrl: googleUser.getBasicProfile().getImageUrl()
-      })
-
     }
     const _authErr = () => console.log('Auth Err')
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
@@ -44,29 +32,32 @@ class Outh extends React.Component {
     GooqleAuth.signIn({
       scope: 'profile email'
     }).then(_authOk, _authErr)
-    // }).then(user => console.log('Ok', user), _authErr)
   }
 
   signOut = () => {
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
     GooqleAuth.signOut().then(() => {
       console.log('signOut OK')
-      this.setState({
-        id: null,
-        name: null,
-        email: null,
-        avaUrl: null,
-      })
+      if (true) {
+        let gUser = {
+          id: null,
+          email: null,
+          g_name: null,
+          avaUrl: null
+        }
+        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl)
+      }
+
     }, () => console.log('signOut ERR'))
   }
   render() {
-    const { name } = this.state
+    const { id } = this.props.gUser
     return (
       <div className="Outh">
-        {!name && <button onClick={this.signIn} >Log In</button>}
-        {!!name && <p>Privet, {name}!</p>}
-        {!!name && <p>Privet, {this.props.gUser.g_name}!</p>}
-        {!!name && <button onClick={this.signOut} >Log Out</button>}
+        {!id && <button onClick={this.signIn} >Log In</button>}
+        {!!id && <p>id:{id}</p>}
+        {!!id && <p>Privet, {this.props.gUser.g_name}!</p>}
+        {!!id && <button onClick={this.signOut} >Log Out</button>}
       </div>
     )
   }
