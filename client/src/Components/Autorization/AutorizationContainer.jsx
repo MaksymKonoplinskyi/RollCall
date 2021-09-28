@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setAuthUserDataActionCreator } from '../../redux/auth-reduser';
+import { setUserGData } from '../../redux/google-auth-reduser';
 import Autorization from './Autorization';
 
 const mapStateToProps = (state) => {
@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setAuthUserData: () => {
-         dispatch(setAuthUserDataActionCreator())
+         dispatch(setUserGData())
         },
         
     }

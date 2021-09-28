@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import * as axios from 'axios'
 import { connect } from 'react-redux';
-import { setUserData } from '../../redux/google-auth-reduser'
+import { setUserGData } from '../../redux/google-auth-reduser'
 // import Outh from './../Outh/Outh';
 
 class HeaderContainer extends React.Component {
@@ -31,4 +31,4 @@ isAuth: state.auth.isAuth,
 login: state.auth.login,
 })
 
-export default connect(mapStateToProps, { setUserData })(HeaderContainer);
+export default connect(mapStateToProps, { setUserGData })(HeaderContainer);
