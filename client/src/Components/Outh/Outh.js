@@ -3,8 +3,11 @@ import './Outh.css';
 
 class Outh extends React.Component {
   state = {
+    id: null,
     name: null,
-    email: null
+    email: null,
+    avaUrl: null,
+
   }
   componentDidMount() {
     window.gapi.load('auth2', function () {
@@ -19,9 +22,12 @@ class Outh extends React.Component {
   signIn = () => {
     const _authOk = googleUser => {
       this.setState({
+        id : googleUser.getBasicProfile().getId(),
         name: googleUser.getBasicProfile().getName(),
-        email: googleUser.getBasicProfile().getEmail()
+        email: googleUser.getBasicProfile().getEmail(),
+        avaUrl: googleUser.getBasicProfile().getImageUrl()
       })
+      
     }
     const _authErr = () => console.log('Auth Err')
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
@@ -29,6 +35,7 @@ class Outh extends React.Component {
     GooqleAuth.signIn({
       scope: 'profile email'
     }).then(_authOk, _authErr)
+  // }).then(user => console.log('Ok', user), _authErr)
   }
 
   signOut = () => {
@@ -36,8 +43,10 @@ class Outh extends React.Component {
     GooqleAuth.signOut().then(() => {
       console.log('signOut OK')
       this.setState({
+        id: null,
         name: null,
         email: null,
+        avaUrl: null,
       })
     }, () => console.log('signOut ERR'))
   }
@@ -46,8 +55,8 @@ class Outh extends React.Component {
     return (
       <div className="Outh">
         {!name && <button onClick={this.signIn} >Log In</button>}
-        {name && <p>Privet, {name}!</p>}
-        {name && <button onClick={this.signOut} >Log Out</button>}
+        {!!name && <p>Privet, {name}!</p>}
+        {!!name && <button onClick={this.signOut} >Log Out</button>}
       </div>
     )
   }

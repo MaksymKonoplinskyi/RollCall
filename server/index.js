@@ -5,6 +5,7 @@ const seqelize = require('./db')
 const models = require('./models/models')
 const cors = require('cors')
 const router = require('./routes/index')
+const authRouter = require('./')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 
 const PORT = process.env.PORT || 5000 

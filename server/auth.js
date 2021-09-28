@@ -35,7 +35,7 @@ passport.use(new GoogleStrategy({
 
      User.findOrCreate({googleId: profile.id}, function (err,user) {
      return done(err, user);
-
+ 
      })
     */
     return done(null, profile); 
