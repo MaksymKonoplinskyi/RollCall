@@ -10,6 +10,9 @@ import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from './Components/Users/UsersContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import AutorizationContainer from './Components/Autorization/AutorizationContainer';
+import HomeContainer from './Components/Home/AuthContainer';
+import RegStudentContainer from './Components/RegStudent/RegStudentContainer';
+import AuthContainer from './Components/Home/AuthContainer';
 
 
 
@@ -36,13 +39,16 @@ import AutorizationContainer from './Components/Autorization/AutorizationContain
 //   }
 // }
 const App = (props) => {
-  
+
   return (
 
     <div className='app-wrapper'>
       <HeaderContainer />
       <NavBar />
       <div className='app-wrapper-content'>
+      <Route path='/regStudent' render={() => <RegStudentContainer />} />
+      {/* <Route path='/regTeacher' render={() => <RegTeacherContainer />} /> */}
+        <Route path='/auth' render={() => <AuthContainer />} />
         <Route path='/dialogs' render={() => <DialogsContainer />} />
         <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
         <Route path='/users' render={() => <UsersContainer />} />

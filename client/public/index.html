@@ -15,17 +15,25 @@
 </head>
 
 <body>
-  <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> -->
+  <!-- <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="108344980966-036p4rd8cs1gggvhk0n3asu9ccsjeo64.apps.googleusercontent.com"
+         data-ux_mode="redirect"
+         data-login_uri="https://www.example.com/your_login_endpoint">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div> -->
+  <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+ 
+  <!-- https://developers.google.com/identity/gsi/web/guides/migration 
+  <!-- data-client_id="108344980966-cgqbpor7sbqphslghr0m8vqgr2vv5qct.apps.googleusercontent.com" 
+  data-client_id="108344980966-cgqbpor7sbqphslghr0m8vqgr2vv5qct.apps.googleusercontent.com"
+  -->
+  
   <!-- <script>
+    
     function onSignIn(googleUser) {
       Useful data for your client-side scripts:
- var profile = googleUser.getBasicProfile();
-      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-      console.log('Full Name: ' + profile.getName());
-      console.log('Given Name: ' + profile.getGivenName());
-      console.log('Family Name: ' + profile.getFamilyName());
-      console.log("Image URL: " + profile.getImageUrl());
-      console.log("Email: " + profile.getEmail());     
+    
 
       // The ID token you need to pass to your backend:
       var id_token = googleUser.getAuthResponse().id_token;

@@ -54,8 +54,8 @@ class Outh extends React.Component {
     return (
       <div className="Outh">
         {!id && <button onClick={this.signIn} >Log In</button>}
-        {!!id && <p>id:{id}</p>}
-        {!!id && <p>Privet, {this.props.gUser.g_name}!</p>}
+        {/* {!!id && <p>id:{id}</p>}
+        {!!id && <p>Privet, {this.props.gUser.g_name}!</p>} */}
         {!!id && <button onClick={this.signOut} >Log Out</button>}
       </div>
     )

@@ -1,11 +1,11 @@
 .Outh {
-    float: right;
+    float:none;
     position: relative;
 }
 
-.Outh__button {
+/* .Outh__button {
     position: right; 
     background-color: tomato;
     margin: auto;
     float: left;
-    }
+    } */
