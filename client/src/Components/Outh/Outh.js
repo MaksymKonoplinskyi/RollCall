@@ -3,7 +3,6 @@ import './Outh.css';
 
 class Outh extends React.Component {
 
-
   componentDidMount() {
     window.gapi.load('auth2', function () {
       window.gapi.auth2
