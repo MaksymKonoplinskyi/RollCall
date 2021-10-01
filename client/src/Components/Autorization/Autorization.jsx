@@ -1,8 +1,5 @@
 import React from 'react';
 import s from './Autorization.module.css'
-import { NavLink } from 'react-router-dom'
-import signInPhoto from '../../assets/images/SingInWithGoogle.png'
-import { authMy } from '../../api/api';
 import axios from 'axios';
 import OuthContainer from '../Outh/OuthContainer';
 
@@ -72,11 +69,3 @@ const Autorization = (props) => {
 
 export default Autorization
 
-{/* {props.isAuth ? props.login : <img onClick={onAuthClick ()} src={signInPhoto} /> */ }
-// http://localhost:5000/api/student/auth
-// getUsers = (currentPage = 2, pageSize = 10) => {
-//     return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
-//         withCredentials: true
-//     })
-//     .then (response => response.data)
-// }

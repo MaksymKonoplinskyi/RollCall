@@ -10,9 +10,8 @@ import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import UsersContainer from './Components/Users/UsersContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
 import AutorizationContainer from './Components/Autorization/AutorizationContainer';
-import HomeContainer from './Components/Home/AuthContainer';
 import RegStudentContainer from './Components/RegStudent/RegStudentContainer';
-import AuthContainer from './Components/Home/AuthContainer';
+import AuthContainer from './Components/Auth/AuthContainer';
 
 
 

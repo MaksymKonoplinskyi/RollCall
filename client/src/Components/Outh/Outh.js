@@ -9,7 +9,7 @@ class Outh extends React.Component {
         .init({
           clint_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
         })
-        .then(() => console.log('init OK'), () => console.log('init ERR'));
+        .then(() => {}, () => console.log('init ERR'));
     });
   }
 
@@ -36,7 +36,7 @@ class Outh extends React.Component {
   signOut = () => {
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
     GooqleAuth.signOut().then(() => {
-      console.log('signOut OK')
+      // console.log('signOut OK')
       if (true) {
         let gUser = {
           id: null,
@@ -54,8 +54,6 @@ class Outh extends React.Component {
     return (
       <div className="Outh">
         {!id && <button onClick={this.signIn} >Log In</button>}
-        {/* {!!id && <p>id:{id}</p>}
-        {!!id && <p>Privet, {this.props.gUser.g_name}!</p>} */}
         {!!id && <button onClick={this.signOut} >Log Out</button>}
       </div>
     )

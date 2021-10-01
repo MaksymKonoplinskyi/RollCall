@@ -10,9 +10,9 @@ function ProfileInfo(props) {
     return (
         <div>
             <div className='content'>
-                <img src='https://kpi.ua/files/images-story/n18518.jpg' className={s.mainImg} />
+                <img src='https://kpi.ua/files/images-story/n18518.jpg' className={s.mainImg} alt=""/>
                 <div className={s.descriptionBlock}>
-                    <img src={props.profile.photos.large} />
+                    <img src={props.profile.photos.large}  alt=""/>
                 </div >
 
             </div>
