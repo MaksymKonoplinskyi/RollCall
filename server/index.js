@@ -7,6 +7,7 @@ const cors = require('cors')
 const router = require('./routes/index')
 const authRouter = require('./')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+const cookieParser = require('cookie-parser')
 
 const PORT = process.env.PORT || 5000 
 
