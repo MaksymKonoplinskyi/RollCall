@@ -3,8 +3,9 @@ const router = new Router()
 const teacherController = require('../controllers/teacherController')
 
 router.post('/registration', teacherController.registration)
-router.post('/login', teacherController.login)
-router.get('/auth', teacherController.check)
+router.get('/refresh', teacherController.refresh)
+router.get('/teachers', teacherController.techers)
+router.get('/check', teacherController.check)
 
 
 module.exports = router 

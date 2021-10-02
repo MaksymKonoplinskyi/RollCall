@@ -20,9 +20,9 @@ const Teacher = sequelize.define('teacher', {
     department: { type: DataTypes.STRING, },
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
-    email: { type: DataTypes.STRING, unique: true, },
+    email: { type: DataTypes.STRING, unique: true },
     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
-    position: { type: DataTypes.STRING, unique: true, },
+    position: { type: DataTypes.STRING, unique: true },
 })
 
 const Group = sequelize.define('group', {
