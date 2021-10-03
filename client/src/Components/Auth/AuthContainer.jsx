@@ -5,7 +5,8 @@ import Auth from './Auth';
 const mapStateToProps = (state) => {
         return {
         id: state.auth.id,
-        g_name: state.auth.g_name
+        g_name: state.auth.g_name,
+        // token: state.auth.token
         // dialogs: state.dialogsPage.dialogs,
         // messages: state.dialogsPage.messages,
         

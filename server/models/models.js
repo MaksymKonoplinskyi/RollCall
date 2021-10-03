@@ -2,7 +2,7 @@ const sequelize = require('../db')
 const { DataTypes } = require('sequelize')
 
 const Student = sequelize.define('student', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true },
     firstName: { type: DataTypes.STRING, allowNull: true },
     middleName: { type: DataTypes.STRING, },
     lastName: { type: DataTypes.STRING, allowNull: true },
@@ -12,11 +12,10 @@ const Student = sequelize.define('student', {
 })
 
 const Teacher = sequelize.define('teacher', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true },
     firstName: { type: DataTypes.STRING, allowNull: true },
     middleName: { type: DataTypes.STRING, allowNull: true },
     lastName: { type: DataTypes.STRING, allowNull: true },
-    //  groups: {type: DataTypes.STRING,},
     department: { type: DataTypes.STRING, },
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
@@ -24,11 +23,11 @@ const Teacher = sequelize.define('teacher', {
     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
     position: { type: DataTypes.STRING, unique: true },
 })
-
+//  groups: {type: DataTypes.STRING,},
 const Group = sequelize.define('group', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    groupName: { type: DataTypes.STRING, unique: true, allowNull: true },
-    groupLeader: { type: DataTypes.STRING, unique: true, },
+    groupName: { type: DataTypes.STRING, unique: true, },
+    groupLeader: { type: DataTypes.STRING, },
     department: { type: DataTypes.STRING, },
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
@@ -36,10 +35,22 @@ const Group = sequelize.define('group', {
 
 const RollCall = sequelize.define('rollCall', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
- //  groupId: { type: DataTypes.INTEGER, },
+    creatorId: { type: DataTypes.INTEGER, },
     date: { type: DataTypes.STRING, },
-    time: { type: DataTypes.STRING, },
-    lessonNamber: { type: DataTypes.INTEGER, }, 
+    day: { type: DataTypes.STRING, },
+    startTime: { type: DataTypes.STRING, },
+    endTime: { type: DataTypes.STRING, },
+    lessonNamber: { type: DataTypes.INTEGER, },
+    pass: { type: DataTypes.STRING, },
+    //presentListId
+})
+
+const PresentStudent = sequelize.define('presentStudent', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    rollCallId: { type: DataTypes.INTEGER, },
+    studentId: { type: DataTypes.INTEGER, },
+    present: { type: DataTypes.BOOLEAN, },
+
 })
 
 Student_RollCall = sequelize.define('student_rollCall', {
@@ -50,16 +61,16 @@ Student_Teacher = sequelize.define('student_teacher', {
 })
 Teacher_Group = sequelize.define('teacher_group', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-})
+}) 
  
-Teacher.hasMany(RollCall)  
-RollCall.belongsTo(Teacher)
-
 Group.hasMany(Student)
 Student.belongsTo(Group)
 
 Group.hasMany(RollCall)
-RollCall.belongsTo(Group)  
+RollCall.belongsTo(Group)
+
+RollCall.hasMany(PresentStudent)
+PresentStudent.belongsTo(RollCall)
 
 Student.belongsToMany(RollCall, { through: Student_RollCall })
 RollCall.belongsToMany(Student, { through: Student_RollCall })
@@ -73,4 +84,5 @@ module.exports = {
     Teacher,
     Group,
     RollCall,
+    PresentStudent
 }

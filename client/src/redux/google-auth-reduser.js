@@ -14,7 +14,7 @@ let initialState = {
     email: null,
     g_name: null,
     avaUrl: null,
-
+    token: null,
 
 
 };

@@ -143,6 +143,8 @@ const RegTeacher = (props) => {
     )
 }
 
+// id, firstName, middleName, lastName, institute, faculty, department, position, email, role
+
 // const Teacher = sequelize.define('teacher', {
 //     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 //     firstName: { type: DataTypes.STRING, allowNull: true },

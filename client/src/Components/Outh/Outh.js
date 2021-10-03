@@ -7,7 +7,7 @@ class Outh extends React.Component {
     window.gapi.load('auth2', function () {
       window.gapi.auth2
         .init({
-          clint_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
         })
         .then(() => {}, () => console.log('init ERR'));
     });
