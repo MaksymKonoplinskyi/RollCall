@@ -5,9 +5,9 @@ const useValidation = (value, validations) => {
     const [isEmpty, setEmptyError] = useState(true)
     const [minLengthError, setMinLengthError] = useState(false)
     const [maxLengthError, setMaxLengthError] = useState(false)
-    const [isName, setNameError] = useState(false)
+    // const [isName, setNameError] = useState(false)
     const [inputValid, setInputValid] = useState(false)
-    
+
     useEffect(() => {
         for (const validation in validations) {
             switch (validation) {
@@ -24,22 +24,23 @@ const useValidation = (value, validations) => {
                 //     const re = /([A-Z]{1}[a-z]{1,30}[- ]{0,1}|[A-Z]{1}[- \']{1}[A-Z]{0,1}[a-z]{1,30}[- ]{0,1}|[a-z]{1,2}[ -\']{1}[A-Z]{1}[a-z]{1,30}){2,5}/
                 //     re.test(toString(value)) ? setNameError(false) : setNameError(true)
                 //     break;
+                default: break;
             }
         }
-    }, [value])
+    }, [value, validations])
     useEffect(() => {
-        if (isEmpty || minLengthError || maxLengthError || isName) {
+        if (isEmpty || minLengthError || maxLengthError) {
             setInputValid(false)
         } else {
             setInputValid(true)
         }
-    }, [isEmpty, minLengthError, maxLengthError, isName])
+    }, [isEmpty, minLengthError, maxLengthError])
 
     return {
         isEmpty,
         minLengthError,
         maxLengthError,
-        isName,
+        // isName,
         inputValid
     }
 
@@ -67,7 +68,7 @@ const useInput = (initialValue, validations) => {
 
 }
 
-    
+
 
 const RegTeacher = (props) => {
 
@@ -80,7 +81,7 @@ const RegTeacher = (props) => {
     const position = useInput('Ст.Выкл', { isEmpty: true })
     // const email = useInput('', { isEmpty: true, minLength: 3 })
     // const password = useInput('', { isEmpty: true, minLength: 5 })
-    
+
 
     return (
         <div>
@@ -128,8 +129,8 @@ const RegTeacher = (props) => {
                 {(password.isDirty && password.minLengthError) && <div style={{ color: 'red' }}>Не корректная длинна</div>}
                 <input onChange={(e) => password.onChange(e)} onBlur={(e) => password.onBlur(e)} value={password.value} name='password' type='password' placeholder='Ente your password...' /> */}
 
-                <button disabled={!firstName.inputValid || !middleName.inputValid || !lastName.inputValid 
-                    || !institute.inputValid || !faculty.inputValid || !department.inputValid 
+                <button disabled={!firstName.inputValid || !middleName.inputValid || !lastName.inputValid
+                    || !institute.inputValid || !faculty.inputValid || !department.inputValid
                     || !position.inputValid} className="btn btn-primary" type='submit'>Зарееструватись</button>
             </form>
 

@@ -20,7 +20,10 @@ class Outh extends React.Component {
           id: googleUser.getBasicProfile().getId(),
           email: googleUser.getBasicProfile().getEmail(),
           g_name: googleUser.getBasicProfile().getName(),
-          avaUrl: googleUser.getBasicProfile().getImageUrl()
+          avaUrl: googleUser.getBasicProfile().getImageUrl(),
+          //  id_token: googleUser.getAuthResponse().id_token;
+          //     console.log("ID Token: " + id_token);
+
         }
         this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl)
       }

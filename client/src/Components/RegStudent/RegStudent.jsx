@@ -26,7 +26,7 @@ const useValidation = (value, validations) => {
                 default: break;
             }
         }
-    }, [value])
+    }, [value, validations])
     useEffect(() => {
         if (isEmpty || minLengthError || maxLengthError) {
             setInputValid(false)
