@@ -7,10 +7,10 @@ class Outh extends React.Component {
     window.gapi.load('auth2', function () {
       window.gapi.auth2
         .init({
-          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+          clint_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
         })
         .then(() => {}, () => console.log('init ERR'));
-    });
+    }); 
   }
 
   signIn = () => {
@@ -36,7 +36,7 @@ class Outh extends React.Component {
   signOut = () => {
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
     GooqleAuth.signOut().then(() => {
-      // console.log('signOut OK')
+  
       if (true) {
         let gUser = {
           id: null,

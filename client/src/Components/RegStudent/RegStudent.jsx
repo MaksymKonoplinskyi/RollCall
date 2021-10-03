@@ -4,7 +4,7 @@ const useValidation = (value, validations) => {
     const [isEmpty, setEmptyError] = useState(true)
     const [minLengthError, setMinLengthError] = useState(false)
     const [maxLengthError, setMaxLengthError] = useState(false)
-    const [isName, setNameError] = useState(false)
+    // const [isName, setNameError] = useState(false)
     const [inputValid, setInputValid] = useState(false)
 
     useEffect(() => {
@@ -19,26 +19,26 @@ const useValidation = (value, validations) => {
                 case 'isEmpty':
                     value ? setEmptyError(false) : setEmptyError(true)
                     break;
-                case 'isName':
-                    const re = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/
-                    re.test(String(value)) ? setNameError(false) : setNameError(true)
-                    break;
+                // case 'isName':
+                //     const re = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/
+                //     re.test(String(value)) ? setNameError(false) : setNameError(true)
+                //     break;
+                default: break;
             }
         }
     }, [value])
-useEffect(() => {
-if (isEmpty || minLengthError || maxLengthError || isName) {
-    setInputValid(false)
-} else {
-    setInputValid(true)
-}
-}, [isEmpty, minLengthError, maxLengthError, isName])
+    useEffect(() => {
+        if (isEmpty || minLengthError || maxLengthError) {
+            setInputValid(false)
+        } else {
+            setInputValid(true)
+        }
+    }, [isEmpty, minLengthError, maxLengthError])
 
     return {
         isEmpty,
         minLengthError,
         maxLengthError,
-        isName,
         inputValid
     }
 
