@@ -20,9 +20,9 @@ const Teacher = sequelize.define('teacher', {
     department: { type: DataTypes.STRING, },
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
-    email: { type: DataTypes.STRING, unique: true },
+    email: { type: DataTypes.STRING,  },
     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
-    position: { type: DataTypes.STRING, unique: true },
+    position: { type: DataTypes.STRING, },
     id_token: { type: DataTypes.STRING, },
 })
 //  groups: {type: DataTypes.STRING,},
@@ -45,7 +45,7 @@ const RollCall = sequelize.define('rollCall', {
     lessonNamber: { type: DataTypes.INTEGER, },
     pass: { type: DataTypes.STRING, },
     //presentListId
-})
+}) 
 
 const PresentStudent = sequelize.define('presentStudent', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },

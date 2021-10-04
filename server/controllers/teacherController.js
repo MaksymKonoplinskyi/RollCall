@@ -7,7 +7,7 @@ class TeacherController {
             const { id, firstName, middleName, lastName, institute, faculty, department,
                 position, email, role, id_token } = req.body
             if (!id || !firstName || !middleName || !lastName || !institute || !faculty || !department
-                || !position || !email || !role) {
+                || !position || !email || !role || !id_token) {
                 return next(ApiError.badRequest('Не все данные заполнены'))
             }
             const candidate = await Teacher.findOne({ where: { email } })
@@ -21,7 +21,8 @@ class TeacherController {
             // candidate = await Teacher.findOne({ where: { department, firstName, lastName } })
             // if (candidate) {
             //     return next(ApiError.badRequest('Преподаватель с такими именем и фамилией уже зарегистрирован на этой кафедре'))
-            // }
+            // } 
+            // console.log(id, firstName, middleName, lastName, institute, faculty, department,position, email, role, id_token);
             const teacher = await Teacher.create({
                 id, firstName, middleName, lastName, institute, faculty, department,
                 position, email, role, id_token
@@ -38,15 +39,15 @@ class TeacherController {
 
         } catch (e) {
 
-        }
+        }  
 
     }
     async teachers(req, res, next) {
         try {
             const teachers = await Teacher.findAll()
-        return res.json(teachers)
+            return res.json(teachers)
         } catch (e) {
- 
+
         }
     }
 

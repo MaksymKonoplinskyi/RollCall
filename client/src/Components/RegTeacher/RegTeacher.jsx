@@ -86,18 +86,20 @@ const RegTeacher = (props) => {
     const click_regTeacher = async () => {
         const regData = {
             id: props.id,
-            firstName: firstName,
-            middleName: middleName,
-            lastName: lastName,
-            institute: institute,
-            faculty: faculty,
-            department: department,
-            position: position,
+            firstName: firstName.value,
+            middleName: middleName.value,
+            lastName: lastName.value,
+            institute: institute.value,
+            faculty: faculty.value,
+            department: department.value,
+            position: position.value,
             email: props.email,
             id_token: props.id_token,
         }
-        const response = await regTeacher(...regData)
+
+        const response = await regTeacher(regData)
         console.log(response);
+        debugger
     }
 
     return (
@@ -148,7 +150,7 @@ const RegTeacher = (props) => {
 
                 <button disabled={!firstName.inputValid || !middleName.inputValid || !lastName.inputValid
                     || !institute.inputValid || !faculty.inputValid || !department.inputValid || !position.inputValid}
-                    onClick={click_regTeacher} className="btn btn-primary" type='submit'>Зарееструватись</button>
+                    onClick={click_regTeacher} className="btn btn-primary" type='button'>Зарееструватись</button>
             </form>
 
 
