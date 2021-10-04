@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
         return {
         id: state.auth.id,
         g_name: state.auth.g_name,
-        email: state.auth.email
+        email: state.auth.email,
+        id_token: state.auth.id_token
         // messages: state.dialogsPage.messages,
         
     }

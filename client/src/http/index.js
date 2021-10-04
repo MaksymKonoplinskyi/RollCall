@@ -1,5 +1,4 @@
 import axios from "axios";
-import { config } from "../../../server/db";
 import store from "../redux/redux-store";
 
 const $host = axios.create({
@@ -11,5 +10,12 @@ const $authHost = axios.create({
 })
 
 const authInterceptor = config => {
-    config.headers.authorization = `Bearer ${store.auth}`
+    config.headers.authorization = `Bearer ${store.auth.id_token}`
+    return config
+}
+$authHost.interceptors.request.use(authInterceptor)
+
+export {
+    $host,
+    $authHost 
 }

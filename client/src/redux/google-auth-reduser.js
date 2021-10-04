@@ -14,7 +14,7 @@ let initialState = {
     email: null,
     g_name: null,
     avaUrl: null,
-    token: null,
+    id_token: null,
 
 
 };
@@ -42,7 +42,7 @@ const googleAuthReduser = (state = initialState, action) => {
             return state
     }
 }
-export const setUserGData = (id, email, g_name, avaUrl) => ({ type: SET_USER_G_DATA, data: { id, email, g_name, avaUrl } });
-export const setUserData = (id, email) => ({ type: SET_USER_DATA, data: { id, email } });
+export const setUserGData = (id, email, g_name, avaUrl, id_token) => ({ type: SET_USER_G_DATA, data: { id, email, g_name, avaUrl, id_token } });
+export const setUserData = (id, email, id_token) => ({ type: SET_USER_DATA, data: { id, email, id_token } });
 
 export default googleAuthReduser

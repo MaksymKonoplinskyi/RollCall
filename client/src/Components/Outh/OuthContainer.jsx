@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUserGData: (id, email, g_name, avaUrl) => {
-         dispatch(setUserGData(id, email, g_name, avaUrl))
+        setUserGData: (id, email, g_name, avaUrl, id_token) => {
+         dispatch(setUserGData(id, email, g_name, avaUrl, id_token))
         },
         
     }

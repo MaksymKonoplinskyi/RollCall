@@ -5,7 +5,5 @@ const studentController = require('../controllers/studentController')
 router.post('/registration', studentController.registration)
 router.post('/login', studentController.login)
 router.get('/auth', studentController.check)
- 
   
-
-module.exports = router
+module.exports = router 

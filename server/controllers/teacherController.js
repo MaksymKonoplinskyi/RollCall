@@ -5,7 +5,7 @@ class TeacherController {
     async registration(req, res, next) {
         try {
             const { id, firstName, middleName, lastName, institute, faculty, department,
-                position, email, role } = req.body
+                position, email, role, id_token } = req.body
             if (!id || !firstName || !middleName || !lastName || !institute || !faculty || !department
                 || !position || !email || !role) {
                 return next(ApiError.badRequest('Не все данные заполнены'))
@@ -24,7 +24,7 @@ class TeacherController {
             // }
             const teacher = await Teacher.create({
                 id, firstName, middleName, lastName, institute, faculty, department,
-                position, email, role
+                position, email, role, id_token
             })
             res.json(['good', '456'])
         } catch (e) {

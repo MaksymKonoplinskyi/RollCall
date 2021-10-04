@@ -8,10 +8,8 @@ import OuthContainer from '../Outh/OuthContainer';
 const Header = () => {
     return (
         <header className={s.header}>
-            <img src='https://kpi.ua/files/kpi_0.png' alt=''/>
-            {/* <Outh /> */}
+            <img src='https://kpi.ua/files/kpi_0.png' alt='' />
             <div className={s.loginBlock}>
-                {/* {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>} */}
                 <OuthContainer />
 
             </div>

@@ -9,8 +9,8 @@ class Outh extends React.Component {
         .init({
           clint_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
         })
-        .then(() => {}, () => console.log('init ERR'));
-    }); 
+        .then(() => { }, () => console.log('init ERR'));
+    });
   }
 
   signIn = () => {
@@ -21,11 +21,10 @@ class Outh extends React.Component {
           email: googleUser.getBasicProfile().getEmail(),
           g_name: googleUser.getBasicProfile().getName(),
           avaUrl: googleUser.getBasicProfile().getImageUrl(),
-          //  id_token: googleUser.getAuthResponse().id_token;
-          //     console.log("ID Token: " + id_token);
-
+          id_token: googleUser.getAuthResponse().id_token,
         }
-        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl)
+        // console.log("ID Token: " + gUser.id_token);
+        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
       }
     }
     const _authErr = () => console.log('Auth Err')
@@ -39,15 +38,16 @@ class Outh extends React.Component {
   signOut = () => {
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
     GooqleAuth.signOut().then(() => {
-  
+
       if (true) {
         let gUser = {
           id: null,
           email: null,
           g_name: null,
-          avaUrl: null
+          avaUrl: null,
+          id_token: null,
         }
-        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl)
+        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
       }
 
     }, () => console.log('signOut ERR'))

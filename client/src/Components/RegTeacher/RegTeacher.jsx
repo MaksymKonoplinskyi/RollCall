@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import OuthContainer from '../Outh/OuthContainer';
+import { regTeacher } from '../../http/userAPI';
+
 // import s from './'
 const useValidation = (value, validations) => {
     const [isEmpty, setEmptyError] = useState(true)
@@ -82,6 +83,22 @@ const RegTeacher = (props) => {
     // const email = useInput('', { isEmpty: true, minLength: 3 })
     // const password = useInput('', { isEmpty: true, minLength: 5 })
 
+    const click_regTeacher = async () => {
+        const regData = {
+            id: props.id,
+            firstName: firstName,
+            middleName: middleName,
+            lastName: lastName,
+            institute: institute,
+            faculty: faculty,
+            department: department,
+            position: position,
+            email: props.email,
+            id_token: props.id_token,
+        }
+        const response = await regTeacher(...regData)
+        console.log(response);
+    }
 
     return (
         <div>
@@ -89,7 +106,7 @@ const RegTeacher = (props) => {
             <form>
                 <h2>Регистрация преподавателя</h2>
                 <p>Ваш аккаун будет привязан к електронной почте: {props.email} и соответствующему гугл аккаунту.</p>
-                <p>Вход будет возможен только через этот аккаунт. Если хотите зарегистрироваться с использованием другого аккаунта, нажмите <OuthContainer /> и после этого войдите с другого аккаунта</p>
+                <p>Вход будет возможен только через этот аккаунт. Если хотите зарегистрироваться с использованием другого аккаунта, смените аккаунт перед регистрацией</p>
                 <p>Введите Ваши данные:</p>
                 <p>Им'я:</p>
                 {(firstName.isDirty && firstName.isEmpty) && <div style={{ color: 'red' }}>Поле не може бути пустим</div>}
@@ -130,8 +147,8 @@ const RegTeacher = (props) => {
                 <input onChange={(e) => password.onChange(e)} onBlur={(e) => password.onBlur(e)} value={password.value} name='password' type='password' placeholder='Ente your password...' /> */}
 
                 <button disabled={!firstName.inputValid || !middleName.inputValid || !lastName.inputValid
-                    || !institute.inputValid || !faculty.inputValid || !department.inputValid
-                    || !position.inputValid} className="btn btn-primary" type='submit'>Зарееструватись</button>
+                    || !institute.inputValid || !faculty.inputValid || !department.inputValid || !position.inputValid}
+                    onClick={click_regTeacher} className="btn btn-primary" type='submit'>Зарееструватись</button>
             </form>
 
 

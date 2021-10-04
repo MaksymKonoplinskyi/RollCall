@@ -9,6 +9,7 @@ const Student = sequelize.define('student', {
     email: { type: DataTypes.STRING, unique: true },
     //   pass: { type: DataTypes.STRING },
     role: { type: DataTypes.STRING, defaultValue: 'STUDENT' },
+    id_token: { type: DataTypes.STRING, },
 })
 
 const Teacher = sequelize.define('teacher', {
@@ -22,6 +23,7 @@ const Teacher = sequelize.define('teacher', {
     email: { type: DataTypes.STRING, unique: true },
     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
     position: { type: DataTypes.STRING, unique: true },
+    id_token: { type: DataTypes.STRING, },
 })
 //  groups: {type: DataTypes.STRING,},
 const Group = sequelize.define('group', {
@@ -32,7 +34,7 @@ const Group = sequelize.define('group', {
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
 })
-
+  
 const RollCall = sequelize.define('rollCall', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     creatorId: { type: DataTypes.INTEGER, },
@@ -50,9 +52,9 @@ const PresentStudent = sequelize.define('presentStudent', {
     rollCallId: { type: DataTypes.INTEGER, },
     studentId: { type: DataTypes.INTEGER, },
     present: { type: DataTypes.BOOLEAN, },
-
+ 
 })
-
+ 
 Student_RollCall = sequelize.define('student_rollCall', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 })
