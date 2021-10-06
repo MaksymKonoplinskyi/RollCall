@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { regTeacher } from '../../http/userAPI';
+// import { regTeacher } from '../../http/userAPI';
 
 // import s from './'
 const useValidation = (value, validations) => {
@@ -83,9 +84,9 @@ const RegTeacher = (props) => {
     // const email = useInput('', { isEmpty: true, minLength: 3 })
     // const password = useInput('', { isEmpty: true, minLength: 5 })
 
-    const click_regTeacher = async () => {
+    const click_regTeacherr = async () => {
         const regData = {
-            id: props.id,
+            id: "66", //props.id,
             firstName: firstName.value,
             middleName: middleName.value,
             lastName: lastName.value,
@@ -93,15 +94,59 @@ const RegTeacher = (props) => {
             faculty: faculty.value,
             department: department.value,
             position: position.value,
-            email: props.email,
+            email: props.email+1,
             id_token: props.id_token,
         }
 
-        const response = await regTeacher(regData)
-        console.log(response);
+        // const response = await regTeacher(regData)
+        // console.log(response);
         debugger
     }
+    const click_regTeacher = async () => {
+        const regData = {
+            id: "1112", //props.id,
+            firstName: firstName.value,
+            middleName: middleName.value,
+            lastName: lastName.value,
+            institute: institute.value,
+            faculty: faculty.value,
+            department: department.value,
+            position: position.value,
+            email: "sfddsf",
+            id_token: props.id_token,
+        }
 
+        axios
+            .post('http://localhost:5000/api/teacher/registration', { ...regData })
+            .then(response => console.log(response.data))
+
+    }
+    const click_get = async () => {
+        axios
+            .get('http://localhost:5000/api/teacher/teachers')
+            .then(response => console.log(response.data))
+
+    }
+    const click_post = async () => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:5000/api/teacher/registration',
+            data: {
+                id: "71",
+                firstName: "adаasfae",
+                middleName: "ad",
+                lastName: "seвf",
+                institute: "sвf",
+                faculty: "sdfвfd",
+                department: "sd",
+                position: "sf",
+                email: "11",
+                role: "djа",
+                id_token: "145"
+            }
+        })
+        .then(response => console.log(response))
+    }
     return (
         <div>
 
@@ -151,6 +196,8 @@ const RegTeacher = (props) => {
                 <button disabled={!firstName.inputValid || !middleName.inputValid || !lastName.inputValid
                     || !institute.inputValid || !faculty.inputValid || !department.inputValid || !position.inputValid}
                     onClick={click_regTeacher} className="btn btn-primary" type='button'>Зарееструватись</button>
+                <button onClick={click_get} className="btn btn-primary" type='button'>get</button>
+                <button onClick={click_post} className="btn btn-primary" type='button'>post</button>
             </form>
 
 

@@ -33,11 +33,11 @@ const profileReduser = (state = initialState, action) => {
                 newPostText: action.newText,
             };
             return stateCopy;
-        }
+        } 
         case SET_USER_PROFILE: {
             return { ...state, profile: action.profile }
         }
-
+ 
         default:
             return state;
     }

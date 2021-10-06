@@ -6,4 +6,4 @@ router.post('/create',rollCallController.create)
 router.get('/',rollCallController.getAll)
 
 
-module.exports = router
+module.exports = router 

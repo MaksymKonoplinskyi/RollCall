@@ -27,7 +27,7 @@ class TeacherController {
                 id, firstName, middleName, lastName, institute, faculty, department,
                 position, email, role, id_token
             })
-            res.json(['good', '456'])
+            res.json(['good', '456'])  
         } catch (e) {
 
         }
