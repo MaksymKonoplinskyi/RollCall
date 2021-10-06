@@ -4,7 +4,7 @@ import RegTeacher from './RegTeacher';
 
 const mapStateToProps = (state) => {
         return {
-        id: state.auth.id,
+        g_id: state.auth.g_id,
         g_name: state.auth.g_name,
         email: state.auth.email,
         id_token: state.auth.id_token

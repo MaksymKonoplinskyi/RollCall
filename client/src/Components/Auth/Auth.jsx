@@ -8,12 +8,12 @@ const Auth = (props) => {
   
     return (
         <div>
-            {!props.id && <div >
+            {!props.g_id && <div >
                 <p> Для начала нужно авторизироваться через googl</p>
                 <OuthContainer />
             </div>}
 
-            {!!props.id && <div >
+            {!!props.g_id && <div >
                 <p>Здравствуйте  {props.g_name}</p>
                 <p>Вы пока не зарегистрированы в системе.</p>
                 <p>Чтобы продолжить Вам нужно</p>

@@ -84,31 +84,7 @@ const RegTeacher = (props) => {
     // const email = useInput('', { isEmpty: true, minLength: 3 })
     // const password = useInput('', { isEmpty: true, minLength: 5 })
     const regData1 = {
-        id: "2", //props.id,
-        firstName: firstName.value,
-        middleName: middleName.value,
-        lastName: lastName.value,
-        institute: institute.value,
-        faculty: faculty.value,
-        department: department.value,
-        position: position.value,
-        email: "2",
-        role: "djа",
-    }
-    const regData2 = {
-        id: "123",
-        firstName: "adаasfae",
-        middleName: "ad",
-        lastName: "seвf",
-        institute: "sвf",
-        faculty: faculty.value,
-        department: "sd",
-        position: "sf",
-        email: "213",
-        role: "djа",
-    }
-    const regData = {
-        id: props.id,
+        g_id: "1234567890",
         firstName: firstName.value,
         middleName: middleName.value,
         lastName: lastName.value,
@@ -117,7 +93,31 @@ const RegTeacher = (props) => {
         department: department.value,
         position: position.value,
         email: props.email,
+        role: "TEACHER",
+    }
+    const regData2 = {
+        g_id: "123",
+        firstName: "adаasfae",
+        middleName: "ad",
+        lastName: "seвf",
+        institute: "sвf",
+        faculty: faculty.value,
+        department: "sd",
+        position: "sf",
+        email: "2.13",
         role: "djа",
+    }
+    const regData = {
+        g_id: props.g_id,
+        firstName: firstName.value,
+        middleName: middleName.value,
+        lastName: lastName.value,
+        institute: institute.value,
+        faculty: faculty.value,
+        department: department.value,
+        position: position.value,
+        email: props.email,
+        role: "TEACHER",
     }
 
     const click_regTeacher = async () => {

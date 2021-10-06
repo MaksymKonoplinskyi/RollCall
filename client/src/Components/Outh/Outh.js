@@ -41,7 +41,7 @@ class Outh extends React.Component {
 
       if (true) {
         let gUser = {
-          id: null,
+          g_id: null,
           email: null,
           g_name: null,
           avaUrl: null,
@@ -53,11 +53,11 @@ class Outh extends React.Component {
     }, () => console.log('signOut ERR'))
   }
   render() {
-    const { id } = this.props.gUser
+    const { g_id } = this.props.gUser
     return (
       <div className="Outh">
-        {!id && <button onClick={this.signIn} >Log In</button>}
-        {!!id && <button onClick={this.signOut} >Log Out</button>}
+        {!g_id && <button onClick={this.signIn} >Log In</button>}
+        {!!g_id && <button onClick={this.signOut} >Log Out</button>}
       </div>
     )
   }
