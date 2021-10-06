@@ -83,38 +83,45 @@ const RegTeacher = (props) => {
     const position = useInput('Ст.Выкл', { isEmpty: true })
     // const email = useInput('', { isEmpty: true, minLength: 3 })
     // const password = useInput('', { isEmpty: true, minLength: 5 })
-
-    const click_regTeacherr = async () => {
-        const regData = {
-            id: "66", //props.id,
-            firstName: firstName.value,
-            middleName: middleName.value,
-            lastName: lastName.value,
-            institute: institute.value,
-            faculty: faculty.value,
-            department: department.value,
-            position: position.value,
-            email: props.email+1,
-            id_token: props.id_token,
-        }
-
-        // const response = await regTeacher(regData)
-        // console.log(response);
-        debugger
+    const regData1 = {
+        id: "2", //props.id,
+        firstName: firstName.value,
+        middleName: middleName.value,
+        lastName: lastName.value,
+        institute: institute.value,
+        faculty: faculty.value,
+        department: department.value,
+        position: position.value,
+        email: "2",
+        role: "djа",
     }
+    const regData2 = {
+        id: "123",
+        firstName: "adаasfae",
+        middleName: "ad",
+        lastName: "seвf",
+        institute: "sвf",
+        faculty: faculty.value,
+        department: "sd",
+        position: "sf",
+        email: "213",
+        role: "djа",
+    }
+    const regData = {
+        id: props.id,
+        firstName: firstName.value,
+        middleName: middleName.value,
+        lastName: lastName.value,
+        institute: institute.value,
+        faculty: faculty.value,
+        department: department.value,
+        position: position.value,
+        email: props.email,
+        role: "djа",
+    }
+
     const click_regTeacher = async () => {
-        const regData = {
-            id: "1112", //props.id,
-            firstName: firstName.value,
-            middleName: middleName.value,
-            lastName: lastName.value,
-            institute: institute.value,
-            faculty: faculty.value,
-            department: department.value,
-            position: position.value,
-            email: "sfddsf",
-            id_token: props.id_token,
-        }
+
 
         axios
             .post('http://localhost:5000/api/teacher/registration', { ...regData })
@@ -132,20 +139,10 @@ const RegTeacher = (props) => {
             method: 'post',
             url: 'http://localhost:5000/api/teacher/registration',
             data: {
-                id: "71",
-                firstName: "adаasfae",
-                middleName: "ad",
-                lastName: "seвf",
-                institute: "sвf",
-                faculty: "sdfвfd",
-                department: "sd",
-                position: "sf",
-                email: "11",
-                role: "djа",
-                id_token: "145"
+                ...regData1
             }
         })
-        .then(response => console.log(response))
+            .then(response => console.log(response))
     }
     return (
         <div>
@@ -206,7 +203,7 @@ const RegTeacher = (props) => {
             <div>
 
             </div>
-        </div>
+        </div >
     )
 }
 

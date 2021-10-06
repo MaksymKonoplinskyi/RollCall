@@ -9,7 +9,6 @@ const Student = sequelize.define('student', {
     email: { type: DataTypes.STRING, unique: true },
     //   pass: { type: DataTypes.STRING },
     role: { type: DataTypes.STRING, defaultValue: 'STUDENT' },
-    id_token: { type: DataTypes.STRING, },
 })
 
 const Teacher = sequelize.define('teacher', {
@@ -20,10 +19,9 @@ const Teacher = sequelize.define('teacher', {
     department: { type: DataTypes.STRING, },
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
-    email: { type: DataTypes.STRING,  },
+    email: { type: DataTypes.STRING, },
     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
     position: { type: DataTypes.STRING, },
-    id_token: { type: DataTypes.STRING, },
 })
 //  groups: {type: DataTypes.STRING,},
 const Group = sequelize.define('group', {
@@ -34,7 +32,7 @@ const Group = sequelize.define('group', {
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
 })
-  
+
 const RollCall = sequelize.define('rollCall', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     creatorId: { type: DataTypes.INTEGER, },
@@ -45,16 +43,16 @@ const RollCall = sequelize.define('rollCall', {
     lessonNamber: { type: DataTypes.INTEGER, },
     pass: { type: DataTypes.STRING, },
     //presentListId
-}) 
+})
 
 const PresentStudent = sequelize.define('presentStudent', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     rollCallId: { type: DataTypes.INTEGER, },
     studentId: { type: DataTypes.INTEGER, },
     present: { type: DataTypes.BOOLEAN, },
- 
+
 })
- 
+
 Student_RollCall = sequelize.define('student_rollCall', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 })
@@ -63,9 +61,9 @@ Student_Teacher = sequelize.define('student_teacher', {
 })
 Teacher_Group = sequelize.define('teacher_group', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-}) 
- 
-Group.hasMany(Student)
+})
+
+Group.hasMany(Student) 
 Student.belongsTo(Group)
 
 Group.hasMany(RollCall)
