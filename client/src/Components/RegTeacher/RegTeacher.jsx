@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-// import { regTeacher } from '../../http/userAPI';
+ import { regTeacher } from '../../http/userAPI';
 
 // import s from './'
 const useValidation = (value, validations) => {
@@ -72,7 +72,7 @@ const useInput = (initialValue, validations) => {
 
 
 
-const RegTeacher = (props) => {
+const RegTeacherPage = (props) => {
 
     const firstName = useInput('Максим', { isEmpty: true })
     const middleName = useInput('Анатолиевич', { isEmpty: true })
@@ -120,12 +120,17 @@ const RegTeacher = (props) => {
         role: "TEACHER",
     }
 
-    const click_regTeacher = () => {
-        axios
-            .post('http://localhost:5000/api/teacher/registration', { ...regData })
-            .then(response => console.log(response), response => console.log(response.message))
+    const click_regTeacher = async () => {
+        const response = await regTeacher (regData) 
+        console.log(response);
+    } 
 
-    }
+    // const click_regTeacher = () => {
+    //     axios
+    //         .post('http://localhost:5000/api/teacher/registration', { ...regData })
+    //         .then(response => console.log(response), response => console.log(response.message))
+
+    // }
     const click_get = async () => {
         axios
             .get('http://localhost:5000/api/teacher/teachers')
@@ -220,5 +225,5 @@ const RegTeacher = (props) => {
 //     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
 // })
 
-export default RegTeacher
+export default RegTeacherPage
 

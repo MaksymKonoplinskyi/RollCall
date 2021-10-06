@@ -25,6 +25,7 @@ class Outh extends React.Component {
         }
         // console.log("ID Token: " + gUser.id_token);
         this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
+        
       }
     }
     const _authErr = () => console.log('Auth Err')
