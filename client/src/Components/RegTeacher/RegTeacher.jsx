@@ -95,18 +95,18 @@ const RegTeacher = (props) => {
         email: props.email,
         role: "TEACHER",
     }
-    const regData2 = {
-        g_id: "123",
-        firstName: "adаasfae",
-        middleName: "ad",
-        lastName: "seвf",
-        institute: "sвf",
-        faculty: faculty.value,
-        department: "sd",
-        position: "sf",
-        email: "2.13",
-        role: "djа",
-    }
+    // const regData2 = {
+    //     g_id: "123",
+    //     firstName: "adаasfae",
+    //     middleName: "ad",
+    //     lastName: "seвf",
+    //     institute: "sвf",
+    //     faculty: faculty.value,
+    //     department: "sd",
+    //     position: "sf",
+    //     email: "2.13",
+    //     role: "djа",
+    // }
     const regData = {
         g_id: props.g_id,
         firstName: firstName.value,
@@ -120,12 +120,10 @@ const RegTeacher = (props) => {
         role: "TEACHER",
     }
 
-    const click_regTeacher = async () => {
-
-
+    const click_regTeacher = () => {
         axios
             .post('http://localhost:5000/api/teacher/registration', { ...regData })
-            .then(response => console.log(response.data))
+            .then(response => console.log(response), response => console.log(response.message))
 
     }
     const click_get = async () => {

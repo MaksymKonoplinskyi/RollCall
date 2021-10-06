@@ -7,39 +7,38 @@ class TeacherController {
             const { g_id, firstName, middleName, lastName, institute, faculty, department,
                 position, email, role } = req.body
             if (!g_id || !firstName || !middleName || !lastName || !institute || !faculty || !department
-                || !position || !email || !role ) {
+                || !position || !email || !role) {
                 return next(ApiError.badRequest('Не все данные заполнены'))
             }
-            // const candidate = await Teacher.findOne({ where: { email } })
-            // if (candidate) {
-            //     return next(ApiError.badRequest('Преподаватель с таким email уже зарегистрирован'))
-            // }
-
-            // if (candidate) {
-            //     return next(ApiError.badRequest('Пользователь с таким email уже зарегистрирован как студент'))
-            // }
-            // candidate = await Teacher.findOne({ where: { department, firstName, lastName } })
-            // if (candidate) {
-            //     return next(ApiError.badRequest('Преподаватель с такими именем и фамилией уже зарегистрирован на этой кафедре'))
-            // } 
-            // console.log(id, firstName, middleName, lastName, institute, faculty, department,position, email, role, id_token);
+            const candidate = await Teacher.findOne({ where: { email } })
+            if (candidate) {
+                return next(ApiError.badRequest('Преподаватель с таким email уже зарегистрирован'))
+            }
+            const candidate_in_student = await Student.findOne({ where: { email } })
+            if (candidate_in_student) {
+                return next(ApiError.badRequest('Пользователь с таким email уже зарегистрирован как студент'))
+            }
+            const candidate_in_department = await Teacher.findOne({ where: { department, firstName, lastName } })
+            if (candidate_in_department) {
+                return next(ApiError.badRequest('Преподаватель с таким именем и фамилией уже зарегистрирован на этой кафедре'))
+            }
             const teacher = await Teacher.create({
                 g_id, firstName, middleName, lastName, institute, faculty, department,
                 position, email, role
             })
-            res.json(['good', '456'])  
+            res.json(['good', '456'])
         } catch (e) {
 
-        }  
+        }
     }
- 
+
 
     async refresh(req, res, next) {
         try {
 
         } catch (e) {
 
-        }  
+        }
 
     }
     async teachers(req, res, next) {
