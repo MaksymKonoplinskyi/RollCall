@@ -1,14 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { regTeacher } from '../../http/userAPI';
+import { getTeacherData, regTeacher } from '../../http/userAPI';
 
 // import s from './'
 const useValidation = (value, validations) => {
     const [isEmpty, setEmptyError] = useState(true)
     const [minLengthError, setMinLengthError] = useState(false)
     const [maxLengthError, setMaxLengthError] = useState(false)
-    // const [isName, setNameError] = useState(false)
     const [inputValid, setInputValid] = useState(false)
 
     useEffect(() => {
@@ -23,10 +22,6 @@ const useValidation = (value, validations) => {
                 case 'isEmpty':
                     value ? setEmptyError(false) : setEmptyError(true)
                     break;
-                // case 'isName':
-                //     const re = /([A-Z]{1}[a-z]{1,30}[- ]{0,1}|[A-Z]{1}[- \']{1}[A-Z]{0,1}[a-z]{1,30}[- ]{0,1}|[a-z]{1,2}[ -\']{1}[A-Z]{1}[a-z]{1,30}){2,5}/
-                //     re.test(toString(value)) ? setNameError(false) : setNameError(true)
-                //     break;
                 default: break;
             }
         }
@@ -43,7 +38,6 @@ const useValidation = (value, validations) => {
         isEmpty,
         minLengthError,
         maxLengthError,
-        // isName,
         inputValid
     }
 
@@ -84,8 +78,7 @@ const RegTeacherPage = (props) => {
     const faculty = useInput('ФЕА', { isEmpty: true })
     const department = useInput('ТЕ', { isEmpty: true })
     const position = useInput('Ст.Выкл', { isEmpty: true })
-    // const email = useInput('', { isEmpty: true, minLength: 3 })
-    // const password = useInput('', { isEmpty: true, minLength: 5 })
+
     const regData1 = {
         g_id: "1234567890",
         firstName: firstName.value,
@@ -127,26 +120,43 @@ const RegTeacherPage = (props) => {
         try {
             const response = await regTeacher(regData)
             console.log(response);
-            //history.push('http://localhost:3000/Profile')/////////////////////////////////////////////////////
+
+            const responseData = await getTeacherData(props.g_id)
+            const userData = { ...responseData.data }
+            props.setUserData(userData)
+            alert('Teacher registration successful, id=' + responseData.data.id)
+            console.log('Teacher registration successful, id=' + responseData.data.id);
+            history.push(`/teacher/${responseData.data.id}`)
         } catch (e) {
             alert(e.response.data.message)
         }
-
     }
 
-    // const click_regTeacher = () => {
-    //     axios
-    //         .post('http://localhost:5000/api/teacher/registration', { ...regData })
-    //         .then(response => console.log(response), response => console.log(response.message))
 
-    // }
     const click_get = async () => {
-        axios
-            // .get('http://localhost:5000/api/teacher/teachers')
-            .get('http://localhost:5000/api/teacher/data', {  })
-            .then(response => console.log(response.data))
-
+        try {
+            const response = await getTeacherData(props.g_id)
+            console.log(response);
+            console.log(response.data.id);
+            // history.push(`/teacher/${response.data.id}`)
+        } catch (e) {
+            alert(e.response.data.message)
+        }
     }
+
+    const click_get1 = async () => {
+        try {
+            axios
+                .get(`http://localhost:5000/api/teacher/data?g_id=${props.g_id}`)
+                .then(response => console.log(response.data))
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+    }
+
+
+    // getTeacherData('100037699072885750750')
+
     const click_post = async () => {
         axios({
             method: 'post',

@@ -1,24 +1,26 @@
 import { connect } from 'react-redux';
-import { setUserGData } from '../../redux/google-auth-reduser';
+import { setUserData } from '../../redux/google-auth-reduser';
 import RegTeacher from './RegTeacher';
 
 const mapStateToProps = (state) => {
-        return {
+    return {
         g_id: state.auth.g_id,
         g_name: state.auth.g_name,
         email: state.auth.email,
         id_token: state.auth.id_token
         // messages: state.dialogsPage.messages,
-        
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setAuthUserData: () => {
-         dispatch(setUserGData())
+        setUserData: () => {
+            dispatch(setUserData())
+            //  setUserData: () => {
+            //     dispatch(setUserData())
         },
-        
+
     }
 }
 

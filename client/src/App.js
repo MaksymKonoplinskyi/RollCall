@@ -17,28 +17,6 @@ import TeacherProfileContainer from './Components/TeacherProfile/TeacherProfileC
 
 
 
-// class App extends React.Component {
-//   render() {
-//     return (
-
-//       <div className='app-wrapper'>
-//         <HeaderContainer />
-//         <NavBar />
-//         <div className='app-wrapper-content'>
-//           <Route path='/dialogs' render={() => <DialogsContainer />} />
-//           <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-//           <Route path='/users' render={() => <UsersContainer />} />
-//           <Route path='/autorization' render={() => <AutorizationContainer />} />
-
-//           <Route path='/News' render={() => <News />} />
-//           <Route path='/Music' render={() => <Music />} />
-//           <Route path='/Settings' render={() => <Settings />} />
-//         </div>
-//       </div>
-
-//     )
-//   }
-// }
 const App = (props) => {
 
   return (

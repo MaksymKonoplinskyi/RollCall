@@ -1,9 +1,11 @@
 import React from 'react';
 import { getTeacherData } from '../../http/userAPI';
 import './Outh.css';
+// import { useHistory } from 'react-router';
 
 class Outh extends React.Component {
-
+// const history = useHistory()
+  
   componentDidMount() {
     window.gapi.load('auth2', function () {
       window.gapi.auth2
@@ -13,6 +15,8 @@ class Outh extends React.Component {
         .then(() => { }, () => console.log('init ERR'));
     });
   }
+
+  
 
   signIn = () => {
     const _authOk = googleUser => {
@@ -25,17 +29,27 @@ class Outh extends React.Component {
         id_token: googleUser.getAuthResponse().id_token,
       }
       this.props.setUserGData(gUser.g_id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
-      // const TeacherData = async (g_id) => getTeacherData(g_id)
+      // this.props.setUserData(gUser.g_id, gUser.id_token)
 
-      // .then(console.log(TeacherData()))
-
-      const TeacherData = async () => {
-        const response = await getTeacherData(gUser.g_id)
-        console.log(response);
+      const trySetTeacherData = async () => {
+        try {
+          const responseData = await getTeacherData(gUser.g_id)
+          const userData = { ...responseData.data }
+          this.props.setUserData(userData)
+          console.log(responseData);
+          console.log(responseData.data.id);
+          
+          // history.push(`/teacher/${response.data.id}`)
+        } catch (e) {
+          alert(e.response.data.message)
+        }
       }
-      TeacherData()
+      trySetTeacherData()
+
     }
     const _authErr = () => console.log('Auth Err')
+
+
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
 
     GooqleAuth.signIn({

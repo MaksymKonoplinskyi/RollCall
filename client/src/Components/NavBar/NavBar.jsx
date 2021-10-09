@@ -21,15 +21,7 @@ function NavBar() {
             <div className={s.item + ' ' + s.active}>
                 <NavLink to="/users" activeClassName={s.active}>Users</NavLink>
             </div>
-            <div className={s.item + ' ' + s.active}>
-                <NavLink to="/News" activeClassName={s.active}>News</NavLink>
-            </div>
-            <div className={s.item + ' ' + s.active}>
-                <NavLink to="/autorization" activeClassName={s.active}>autorization</NavLink>
-            </div>
-            <div className={s.item + ' ' + s.active}>
-                <NavLink to="/Settings" activeClassName={s.active}>Settings</NavLink>
-            </div>
+
         </nav>
     )
 }
