@@ -29,7 +29,7 @@ class Outh extends React.Component {
         id_token: googleUser.getAuthResponse().id_token,
       }
       this.props.setUserGData(gUser.g_id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
-      // this.props.setUserData(gUser.g_id, gUser.id_token)
+     
 
       const trySetTeacherData = async () => {
         try {
@@ -47,6 +47,9 @@ class Outh extends React.Component {
       trySetTeacherData()
 
     }
+
+
+
     const _authErr = () => console.log('Auth Err')
 
 
@@ -62,7 +65,7 @@ class Outh extends React.Component {
     GooqleAuth.signOut().then(() => {
 
       if (true) {
-        let gUser = {
+        const gUser = {
           g_id: null,
           email: null,
           g_name: null,

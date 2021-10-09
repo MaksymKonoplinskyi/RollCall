@@ -21,8 +21,8 @@ const App = (props) => {
       <HeaderContainer />
       <NavBar />
       <div className='app-wrapper-content'>
-      
-      <Route path='/teacher' render={() => <TeacherProfileContainer />} />
+
+        <Route path='/teacher' render={() => <TeacherProfileContainer />} />
         <Route path='/regStudent' render={() => <RegStudentContainer />} />
         <Route path='/regTeacher' render={() => <RegTeacherContainer />} />
         <Route path='/auth' render={() => <AuthContainer />} />
