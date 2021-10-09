@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
- import { regTeacher } from '../../http/userAPI';
+import { useHistory } from 'react-router';
+import { regTeacher } from '../../http/userAPI';
 
 // import s from './'
 const useValidation = (value, validations) => {
@@ -74,6 +75,8 @@ const useInput = (initialValue, validations) => {
 
 const RegTeacherPage = (props) => {
 
+    const history = useHistory()
+
     const firstName = useInput('Максим', { isEmpty: true })
     const middleName = useInput('Анатолиевич', { isEmpty: true })
     const lastName = useInput('Коноплинский', { isEmpty: true })
@@ -121,9 +124,15 @@ const RegTeacherPage = (props) => {
     }
 
     const click_regTeacher = async () => {
-        const response = await regTeacher (regData) 
-        console.log(response);
-    } 
+        try {
+            const response = await regTeacher(regData)
+            console.log(response);
+            //history.push('http://localhost:3000/Profile')/////////////////////////////////////////////////////
+        } catch (e) {
+            alert(e.response.data.message)
+        }
+
+    }
 
     // const click_regTeacher = () => {
     //     axios
@@ -133,7 +142,8 @@ const RegTeacherPage = (props) => {
     // }
     const click_get = async () => {
         axios
-            .get('http://localhost:5000/api/teacher/teachers')
+            // .get('http://localhost:5000/api/teacher/teachers')
+            .get('http://localhost:5000/api/teacher/data', {  })
             .then(response => console.log(response.data))
 
     }

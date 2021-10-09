@@ -1,4 +1,5 @@
 import React from 'react';
+import { getTeacherData } from '../../http/userAPI';
 import './Outh.css';
 
 class Outh extends React.Component {
@@ -15,18 +16,24 @@ class Outh extends React.Component {
 
   signIn = () => {
     const _authOk = googleUser => {
-      if (true) {
-        let gUser = {
-          id: googleUser.getBasicProfile().getId(),
-          email: googleUser.getBasicProfile().getEmail(),
-          g_name: googleUser.getBasicProfile().getName(),
-          avaUrl: googleUser.getBasicProfile().getImageUrl(),
-          id_token: googleUser.getAuthResponse().id_token,
-        }
-        // console.log("ID Token: " + gUser.id_token);
-        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
-        
+
+      const gUser = {
+        g_id: googleUser.getBasicProfile().getId(),
+        email: googleUser.getBasicProfile().getEmail(),
+        g_name: googleUser.getBasicProfile().getName(),
+        avaUrl: googleUser.getBasicProfile().getImageUrl(),
+        id_token: googleUser.getAuthResponse().id_token,
       }
+      this.props.setUserGData(gUser.g_id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
+      // const TeacherData = async (g_id) => getTeacherData(g_id)
+
+      // .then(console.log(TeacherData()))
+
+      const TeacherData = async () => {
+        const response = await getTeacherData(gUser.g_id)
+        console.log(response);
+      }
+      TeacherData()
     }
     const _authErr = () => console.log('Auth Err')
     const GooqleAuth = window.gapi.auth2.getAuthInstance()
@@ -48,7 +55,7 @@ class Outh extends React.Component {
           avaUrl: null,
           id_token: null,
         }
-        this.props.setUserGData(gUser.id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
+        this.props.setUserGData(gUser.g_id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
       }
 
     }, () => console.log('signOut ERR'))

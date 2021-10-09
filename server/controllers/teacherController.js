@@ -32,6 +32,20 @@ class TeacherController {
         }
     }
 
+    async data(req, res, next) {
+        try {
+            const { g_id } = req.query
+            console.log(g_id);
+            if (!g_id) {
+                return next(ApiError.badRequest('Пользователь не авторизован'))
+            }
+            const teacherData = await Teacher.findOne({ where: { g_id } })
+            res.json(teacherData)
+        } catch (e) {
+
+        }
+
+    }
 
     async refresh(req, res, next) {
         try {
