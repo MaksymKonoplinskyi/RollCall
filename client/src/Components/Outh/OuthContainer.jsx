@@ -4,7 +4,7 @@ import Outh from './Outh';
 
 const mapStateToProps = (state) => {
     return {
-        gUser: state.auth,
+        gUser: state.auth.gUser,
         // dialogs: state.dialogsPage.dialogs,
         // messages: state.dialogsPage.messages,
 
@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUserGData: (g_id, email, g_name, avaUrl, id_token) => {
-            dispatch(setUserGData(g_id, email, g_name, avaUrl, id_token))
+        setUserGData: (gUser) => {
+            dispatch(setUserGData(gUser))
         },
         setUserData: (userData) => {
             dispatch(setUserData(userData))

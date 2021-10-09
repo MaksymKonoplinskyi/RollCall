@@ -28,7 +28,7 @@ class Outh extends React.Component {
         avaUrl: googleUser.getBasicProfile().getImageUrl(),
         id_token: googleUser.getAuthResponse().id_token,
       }
-      this.props.setUserGData(gUser.g_id, gUser.email, gUser.g_name, gUser.avaUrl, gUser.id_token)
+      this.props.setUserGData(gUser)
      
 
       const trySetTeacherData = async () => {
