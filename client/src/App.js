@@ -13,6 +13,7 @@ import AutorizationContainer from './Components/Autorization/AutorizationContain
 import RegStudentContainer from './Components/RegStudent/RegStudentContainer';
 import AuthContainer from './Components/Auth/AuthContainer';
 import RegTeacherContainer from './Components/RegTeacher/RegTeacherContainer';
+import TeacherProfileContainer from './Components/TeacherProfile/TeacherProfileContainer';
 
 
 
@@ -46,8 +47,10 @@ const App = (props) => {
       <HeaderContainer />
       <NavBar />
       <div className='app-wrapper-content'>
-      <Route path='/regStudent' render={() => <RegStudentContainer />} />
-      <Route path='/regTeacher' render={() => <RegTeacherContainer />} />
+      
+      <Route path='/teacher' render={() => <TeacherProfileContainer />} />
+        <Route path='/regStudent' render={() => <RegStudentContainer />} />
+        <Route path='/regTeacher' render={() => <RegTeacherContainer />} />
         <Route path='/auth' render={() => <AuthContainer />} />
         <Route path='/dialogs' render={() => <DialogsContainer />} />
         <Route path='/profile/:userId?' render={() => <ProfileContainer />} />

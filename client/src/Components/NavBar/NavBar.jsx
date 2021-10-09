@@ -10,6 +10,9 @@ function NavBar() {
                 <NavLink to="/auth" activeClassName={s.active}>Auth</NavLink>
             </div>
             <div className={s.item + ' ' + s.active}>
+                <NavLink to="/teacher" activeClassName={s.active}>Teacher Profile</NavLink>
+            </div>
+            <div className={s.item + ' ' + s.active}>
                 <NavLink to="/Profile" activeClassName={s.active}>Profile</NavLink>
             </div>
             <div className={s.item + ' ' + s.active}>

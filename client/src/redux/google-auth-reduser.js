@@ -3,13 +3,7 @@ const SET_USER_DATA = 'SET_USER_DATA';
 
 
 let initialState = {
-    // gUser: {
-    //     id: null,
-    //     email: null,
-    //     name: null,
-    //     avaUrl: null,
-
-    // },
+   
     g_id: null,
     email: null,
     g_name: null,
