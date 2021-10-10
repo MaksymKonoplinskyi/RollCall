@@ -24,7 +24,7 @@ const CreateGroup = (props) => {
         groupLeaderId: null,
         criator_g_id: props.g_id,
     }
-
+    // debugger
 
 
 
@@ -89,7 +89,7 @@ const CreateGroup = (props) => {
 
 
                 <button disabled={!groupName.inputValid || !institute.inputValid || !faculty.inputValid || !department.inputValid }
-                    onClick={click_сreateGroup} className="btn btn-primary" type='button'>Зарееструватись</button>
+                    onClick={click_сreateGroup} className="btn btn-primary" type='button'>Зарееструвати группу</button>
                 <button onClick={click_get} className="btn btn-primary" type='button'>get</button>
                 {/* <button onClick={click_post} className="btn btn-primary" type='button'>post</button> */}
             </form>

@@ -18,12 +18,12 @@ export const getStudentData = async (g_id) => {
 
 
 export const regGroup = async (regData) => {
-    const response = await $host.post('api/teacher/registration', { ...regData })
+    const response = await $host.post('api/group/create', { ...regData })
     return response
 }
 
 export const getAllGroup = async (g_id) => {
-    const response = await $host.get(`api/teacher/data?g_id=${g_id}`,)
+    const response = await $host.get('api/group/all',)
     return response
 }
 

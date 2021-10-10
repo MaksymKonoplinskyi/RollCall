@@ -10,7 +10,6 @@ const Registration = (props) => {
     return (
         <div>
 
-
             <div >
                 <p>Здравствуйте  {props.g_name}</p>
                 <p>Вы пока не зарегистрированы в системе.</p>
@@ -25,8 +24,6 @@ const Registration = (props) => {
 
 
             </div >
-
-
 
             <div>
 
