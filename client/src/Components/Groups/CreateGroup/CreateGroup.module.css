@@ -1,0 +1,24 @@
+.input {
+    color: rgb(0, 0, 0);
+    width: 100%;
+    padding: 12px 15px;
+  margin: 8px 0;
+  border: 2px solid ;
+  border-radius: 4px;
+}
+.input:focus {
+    background-color: rgb(241, 255, 44);
+  }
+
+.button {
+    width: 100%;
+}
+
+.p {
+    text-align: center;
+}
+
+.h_p {
+    font-size: 35px;
+    text-align: center;
+}

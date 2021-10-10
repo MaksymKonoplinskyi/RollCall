@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { getTeacherData } from '../../http/userAPI';
 import './Outh.css';
 import { useHistory } from 'react-router';
+import {Button} from 'react-bootstrap';
 
 const Outh = (props) => {
 
@@ -94,8 +95,11 @@ const Outh = (props) => {
 
   return (
     <div className="Outh">
-      {!props.gUser.g_id && <button onClick={signIn} >Log In</button>}
-      {!!props.gUser.g_id && <button onClick={signOut} >Log Out</button>}
+      {props.gUser.g_id ? 
+      <Button variant={'success'} onClick={signOut} >Log Out</Button>
+      :<Button variant={'success'} onClick={signIn} >Log In</Button> }
+      {/* {!props.gUser.g_id && <button onClick={signIn} >Log In</button>}
+      {!!props.gUser.g_id && <button onClick={signOut} >Log Out</button>} */}
     </div>
   )
 }
