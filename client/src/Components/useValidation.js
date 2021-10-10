@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
- const useValidation = (value, validations) => {
+const useValidation = (value, validations) => {
     const [isEmpty, setEmptyError] = useState(true)
     const [minLengthError, setMinLengthError] = useState(false)
     const [maxLengthError, setMaxLengthError] = useState(false)
@@ -40,3 +40,4 @@ import { useEffect, useState } from 'react';
 }
 
 export default useValidation
+

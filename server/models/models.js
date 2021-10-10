@@ -29,10 +29,11 @@ const Teacher = sequelize.define('teacher', {
 const Group = sequelize.define('group', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     groupName: { type: DataTypes.STRING, unique: true, },
-    groupLeader: { type: DataTypes.STRING, },
     department: { type: DataTypes.STRING, },
     faculty: { type: DataTypes.STRING, },
     institute: { type: DataTypes.STRING, },
+    groupLeaderId: { type: DataTypes.STRING, },
+    criator_g_id: { type: DataTypes.STRING, },
 })
 
 const RollCall = sequelize.define('rollCall', {

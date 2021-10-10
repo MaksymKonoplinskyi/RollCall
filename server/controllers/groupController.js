@@ -5,13 +5,21 @@ class GroupController {
 
     async create(req, res, next) {
         try {
-            const { groupName } = req.body
-
-            if (!groupName) {
-                return next(ApiError.badRequest('Название не может быть пустым'))
+            const {  groupName, institute, faculty, department, groupLeaderId, criator_g_id } = req.body
+            if ( !groupName ||  !institute || !faculty || !department) {
+                return next(ApiError.badRequest('Не всі поля заповнені'))
             }
-
-            const group = await Group.create({ groupName })
+                if (!criator_g_id ) {
+                    return next(ApiError.badRequest('Ви не увійшли до системи'))  
+            }
+            const candidate = await Group.findOne({ where: { groupName } })
+            if (candidate) {
+                return next(ApiError.badRequest('Группа з такою назвою вже створена'))
+            }
+          
+            const group = await Group.create({
+                groupName, institute, faculty, department, groupLeaderId, criator_g_id
+ })
             return res.json(group)
         } catch (e) {
 
@@ -27,6 +35,6 @@ class GroupController {
         const { id } = req.params
         const group = await Group.findOne({ where: { id } })
     }
-
+ 
 }
 module.exports = new GroupController()

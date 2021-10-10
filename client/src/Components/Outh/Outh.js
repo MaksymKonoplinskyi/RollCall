@@ -40,14 +40,22 @@ const Outh = (props) => {
       const trySetTeacherData = async () => {
         try {
           const responseData = await getTeacherData(gUser.g_id)
-          const userData = { ...responseData.data }
-          props.setUserData(userData)
-          console.log(responseData);
-          console.log(responseData.data.id);
-          history.push(`/teacher/${responseData.data.id}`)
           
+          if (responseData.data === null) {
+            history.push('/registration')
+          } else {
+            const userData = { ...responseData.data }
+
+            props.setUserData(userData)
+            console.log(responseData);
+            console.log(responseData.data.id);
+            history.push(`/teacher/${responseData.data.id}`)
+          }
+
+
+
         } catch (e) {
-          alert(e.response.data.message)
+
         }
       }
       trySetTeacherData()

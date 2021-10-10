@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { setUserGData } from '../../redux/google-auth-reduser';
-import Auth from './Auth';
+import Registration from './Registration';
 
 const mapStateToProps = (state) => {
         return {
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const AuthContainer = connect(mapStateToProps, mapDispatchToProps)(Auth)
+const RegistrationContainer = connect(mapStateToProps, mapDispatchToProps)(Registration)
 
 
-export default AuthContainer
+export default RegistrationContainer

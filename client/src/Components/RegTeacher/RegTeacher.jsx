@@ -1,73 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState } from 'react';
+import { Redirect, useHistory } from 'react-router';
 import { getTeacherData, regTeacher } from '../../http/userAPI';
-
-const useValidation = (value, validations) => {
-    const [isEmpty, setEmptyError] = useState(true)
-    const [minLengthError, setMinLengthError] = useState(false)
-    const [maxLengthError, setMaxLengthError] = useState(false)
-    const [inputValid, setInputValid] = useState(false)
-
-    useEffect(() => {
-        for (const validation in validations) {
-            switch (validation) {
-                case 'minLength':
-                    value.length < validations[validation] ? setMinLengthError(true) : setMinLengthError(false)
-                    break;
-                case 'maxLength':
-                    value.length > validations[validation] ? setMaxLengthError(true) : setMaxLengthError(false)
-                    break;
-                case 'isEmpty':
-                    value ? setEmptyError(false) : setEmptyError(true)
-                    break;
-                default: break;
-            }
-        }
-    }, [value, validations])
-    useEffect(() => {
-        if (isEmpty || minLengthError || maxLengthError) {
-            setInputValid(false)
-        } else {
-            setInputValid(true)
-        }
-    }, [isEmpty, minLengthError, maxLengthError])
-
-    return {
-        isEmpty,
-        minLengthError,
-        maxLengthError,
-        inputValid
-    }
-
-}
-
-const useInput = (initialValue, validations) => {
-    const [value, setValue] = useState(initialValue)
-    const [isDirty, setDirty] = useState(false)
-    const valid = useValidation(value, validations)
-    const onChange = (e) => {
-        setValue(e.target.value)
-    }
-
-    const onBlur = (e) => {
-        setDirty(true)
-    }
-
-    return {
-        value,
-        onChange,
-        onBlur,
-        isDirty,
-        ...valid
-    }
-
-}
-
+import useInput from '../useInput';
 
 
 const RegTeacherPage = (props) => {
 
     const history = useHistory()
+    const [regError, setRegError] = useState(null)
 
     const firstName = useInput('Максим', { isEmpty: true })
     const middleName = useInput('Анатолиевич', { isEmpty: true })
@@ -90,19 +30,6 @@ const RegTeacherPage = (props) => {
         email: props.email,
         role: "TEACHER",
     }
-    const regData1 = {
-        g_id: props.g_id,
-        firstName: firstName.value,
-        middleName: middleName.value,
-        lastName: lastName.value,
-        institute: institute.value,
-        faculty: faculty.value,
-        department: department.value,
-        position: position.value,
-        email: props.email,
-        role: "TEACHER",
-    }
-
 
     const click_regTeacher = async () => {
         try {
@@ -117,6 +44,7 @@ const RegTeacherPage = (props) => {
             history.push(`/teacher/${responseData.data.id}`)
         } catch (e) {
             alert(e.response.data.message)
+            setRegError(e.response.data.message)
         }
     }
 
@@ -124,15 +52,18 @@ const RegTeacherPage = (props) => {
     const click_get = async () => {
         try {
             const response = await getTeacherData(props.g_id)
+            debugger
             console.log(response);
             console.log(response.data.id);
             // history.push(`/teacher/${response.data.id}`)
         } catch (e) {
             alert(e.response.data.message)
+            setRegError(e.response.data.message)
         }
     }
 
 
+if (!props.g_id) return <Redirect to={'/auth'} />;
 
     return (
         <div>
@@ -171,7 +102,7 @@ const RegTeacherPage = (props) => {
                 <input onChange={(e) => position.onChange(e)} onBlur={(e) => position.onBlur(e)} value={position.value} name='position' type='text' placeholder='Посада' />
                 <br />
                 <br />
-               
+
                 <button disabled={!firstName.inputValid || !middleName.inputValid || !lastName.inputValid
                     || !institute.inputValid || !faculty.inputValid || !department.inputValid || !position.inputValid}
                     onClick={click_regTeacher} className="btn btn-primary" type='button'>Зарееструватись</button>
@@ -183,7 +114,7 @@ const RegTeacherPage = (props) => {
 
 
             <div>
-
+                {(regError) && <div style={{ color: 'red' }}>Помилка реестрації:{regError}</div >}
             </div>
         </div >
     )

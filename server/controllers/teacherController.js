@@ -6,9 +6,12 @@ class TeacherController {
         try {
             const { g_id, firstName, middleName, lastName, institute, faculty, department,
                 position, email, role } = req.body
-            if (!g_id || !firstName || !middleName || !lastName || !institute || !faculty || !department
+            if (!firstName || !middleName || !lastName || !institute || !faculty || !department
                 || !position || !email || !role) {
-                return next(ApiError.badRequest('Не все данные заполнены'))
+                return next(ApiError.badRequest('Не всі поля заповнені'))
+            }
+            if (!g_id ) {
+                return next(ApiError.badRequest('Ви не увійшли до системи')) 
             }
             const candidate = await Teacher.findOne({ where: { email } })
             if (candidate) {

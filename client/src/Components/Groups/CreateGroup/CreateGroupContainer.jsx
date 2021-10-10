@@ -1,26 +1,25 @@
-
 import { connect } from 'react-redux';
-import { setUserData } from '../../../redux/google-auth-reduser';
-
-// import { setUserData } from '../../redux/google-auth-reduser';
-
 import CreateGroup from './CreateGroup';
 
 
 const mapStateToProps = (state) => {
     return {
-        gUser: state.auth.gUser,
-        tData: state.auth.tData,
+        g_id: state.auth.gUser.g_id,
+        g_name: state.auth.gUser.g_name,
+        email: state.auth.gUser.email,
+        id_token: state.auth.gUser.id_token
+        
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUserData: () => {
-            dispatch(setUserData())
+        // setUserData: () => {
+        //     dispatch(setUserData())
             //  setUserData: () => {
             //     dispatch(setUserData())
-        },
+        // },
 
     }
 }

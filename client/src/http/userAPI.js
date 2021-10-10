@@ -16,6 +16,17 @@ export const getStudentData = async (g_id) => {
     return response
 }
 
+
+export const regGroup = async (regData) => {
+    const response = await $host.post('api/teacher/registration', { ...regData })
+    return response
+}
+
+export const getAllGroup = async (g_id) => {
+    const response = await $host.get(`api/teacher/data?g_id=${g_id}`,)
+    return response
+}
+
 // export const getUser = (g_id = 2, ) => {
 //     return axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`, {
 //         withCredentials: true

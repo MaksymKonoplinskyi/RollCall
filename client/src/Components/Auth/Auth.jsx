@@ -15,19 +15,10 @@ const Auth = (props) => {
             </div>}
 
             {!!props.g_id && <div >
-                <p>Здравствуйте  {props.g_name}</p>
-                <p>Вы пока не зарегистрированы в системе.</p>
-                <p>Чтобы продолжить Вам нужно</p>
-                <div >
-                <NavLink to="/regStudent" >Зарегистрироваться как студент</NavLink>
-            </div>
-            <p>или</p>
-            <div >
-                <NavLink to="/regTeacher" >Зарегистрироваться как преподаватель</NavLink>
-            </div>
-
-
-            </div >}
+                <p> Ви авторизовані як {props.g_name}.</p>
+                <p> Якщо хочете вийти натисніть:</p>
+                <OuthContainer />
+            </div>}
 
 
 

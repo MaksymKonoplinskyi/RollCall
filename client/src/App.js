@@ -11,10 +11,11 @@ import AuthContainer from './Components/Auth/AuthContainer';
 import RegTeacherContainer from './Components/RegTeacher/RegTeacherContainer';
 import TeacherProfileContainer from './Components/TeacherProfile/TeacherProfileContainer';
 import GroupsContainer from './Components/Groups/GroupsContainer';
-
+import RegistrationContainer from './Components/Registration/RegistrationContainer';
 
 
 const App = (props) => {
+
 
   return (
 
@@ -22,11 +23,12 @@ const App = (props) => {
       <HeaderContainer />
       <NavBar />
       <div className='app-wrapper-content'>
-
+      
         <Route path='/teacher/:t_id?' render={() => <TeacherProfileContainer />} />
         <Route path='/regStudent' render={() => <RegStudentContainer />} />
         <Route path='/regTeacher' render={() => <RegTeacherContainer />} />
         <Route path='/auth' render={() => <AuthContainer />} />
+        <Route path='/registration' render={() => <RegistrationContainer />} />
         <Route path='/groups' render={() => <GroupsContainer />} />
         <Route path='/dialogs' render={() => <DialogsContainer />} />
         <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
