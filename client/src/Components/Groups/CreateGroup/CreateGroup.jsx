@@ -76,35 +76,35 @@ const CreateGroup = (props) => {
                         <h2 className={s.h_p}>Реєстрація групи</h2>
                         <p className={s.p}>Обовязково спочатку переконайтеся що группа ще не зареєстрована</p>
                         <p>
-                            Група:{(groupName.isDirty && groupName.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
+                            Група: {(groupName.isDirty && groupName.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
                             <input className={s.input} onChange={(e) => groupName.onChange(e)} onBlur={(e) => groupName.onBlur(e)} value={groupName.value} name='groupName' type='text' placeholder="Назва группи, наприклад КВ01" />
                         </p>
                         <p>
-                            Інститут:{(institute.isDirty && institute.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
+                            Інститут: {(institute.isDirty && institute.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
 
                             <input className={s.input} onChange={(e) => institute.onChange(e)} onBlur={(e) => institute.onBlur(e)} value={institute.value} name='institute' type='text' placeholder='Інститут' />
                         </p>
                         <p>
-                            Факультет:{(faculty.isDirty && faculty.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
+                            Факультет: {(faculty.isDirty && faculty.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
 
                             <input className={s.input} onChange={(e) => faculty.onChange(e)} onBlur={(e) => faculty.onBlur(e)} value={faculty.value} name='faculty' type='text' placeholder='Факультет' />
                         </p>
                         <p>
-                            Кафедра:{(department.isDirty && department.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
+                            Кафедра: {(department.isDirty && department.isEmpty) && <span style={{ color: 'red' }}>Поле не може бути пустим</span>}
 
                             <input className={s.input} onChange={(e) => department.onChange(e)} onBlur={(e) => department.onBlur(e)} value={department.value} name='department' type='text' placeholder='Кафедра' />
                         </p>
 
                         <span>
                             {(regResultCode === 200) && <span style={{ color: 'green' }}>Группа {regResult} успішно зареестрована</span >}
-                            {(regResultCode === 404) && <span style={{ color: 'red' }}>Помилка реестрації: {regResult}</span >}
+                            {(regResultCode === 404) && <span style={{ color: 'red' }}>{regResult}</span >}
                             {!(regResultCode === 404 || regResultCode === 200 || regResultCode === null)
                                 && <span style={{ color: 'red' }}>Невідома помилка реестрації:{regResult}</span >}
                         </span>
                         <Button className={s.button} disabled={!groupName.inputValid || !institute.inputValid || !faculty.inputValid || !department.inputValid}
                             onClick={click_сreateGroup} variant="success" >Зарееструвати группу</Button>
                         <button onClick={click_get} className="btn btn-primary" type='button'>get</button>
-                        {/* <button onClick={click_post} className="btn btn-primary" type='button'>post</button> */}
+                        
                     </Form>
 
 
