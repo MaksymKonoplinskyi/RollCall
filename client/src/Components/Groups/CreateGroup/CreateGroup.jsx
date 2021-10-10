@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router';
-import { getAllGroup, regGroup } from '../../../http/userAPI';
+import { getGroups, regGroup } from '../../../http/userAPI';
 import useInput from '../../useInput';
 
 
@@ -48,7 +48,7 @@ const CreateGroup = (props) => {
 
     const click_get = async () => {
         try {
-            const response = await getAllGroup(props.g_id)
+            const response = await getGroups(props.g_id)
             console.log(response);
             console.log(response.data.id);
             // history.push(`/teacher/${response.data.id}`)
@@ -88,7 +88,7 @@ const CreateGroup = (props) => {
                 <br />
 
 
-                <button disabled={!groupName.inputValid || !institute.inputValid || !faculty.inputValid || !department.inputValid }
+                <button disabled={!groupName.inputValid || !institute.inputValid || !faculty.inputValid || !department.inputValid}
                     onClick={click_сreateGroup} className="btn btn-primary" type='button'>Зарееструвати группу</button>
                 <button onClick={click_get} className="btn btn-primary" type='button'>get</button>
                 {/* <button onClick={click_post} className="btn btn-primary" type='button'>post</button> */}

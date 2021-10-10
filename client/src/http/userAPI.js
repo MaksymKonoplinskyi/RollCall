@@ -22,7 +22,7 @@ export const regGroup = async (regData) => {
     return response
 }
 
-export const getAllGroup = async (g_id) => {
+export const getGroups = async (g_id) => {
     const response = await $host.get('api/group/all',)
     return response
 }

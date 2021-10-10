@@ -4,7 +4,7 @@ import { setUserData } from '../../../redux/google-auth-reduser';
 
 // import { setUserData } from '../../redux/google-auth-reduser';
 
-import AllGroups from './AllGroups';
+import FilterGroups from './FilterGroups';
 
 
 const mapStateToProps = (state) => {
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const AllGroupsContainer = connect(mapStateToProps, mapDispatchToProps)(AllGroups)
+const FilterGroupsContainer = connect(mapStateToProps, mapDispatchToProps)(FilterGroups)
 
 
-export default AllGroupsContainer
+export default FilterGroupsContainer
