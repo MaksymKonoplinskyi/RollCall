@@ -13,6 +13,9 @@ function NavBar() {
                 <NavLink to="/teacher" activeClassName={s.active}>Teacher Profile</NavLink>
             </div>
             <div className={s.item + ' ' + s.active}>
+                <NavLink to="/groups" activeClassName={s.active}>Groups</NavLink>
+            </div>
+            <div className={s.item + ' ' + s.active}>
                 <NavLink to="/Profile" activeClassName={s.active}>Profile</NavLink>
             </div>
             <div className={s.item + ' ' + s.active}>

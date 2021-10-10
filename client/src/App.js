@@ -10,6 +10,7 @@ import RegStudentContainer from './Components/RegStudent/RegStudentContainer';
 import AuthContainer from './Components/Auth/AuthContainer';
 import RegTeacherContainer from './Components/RegTeacher/RegTeacherContainer';
 import TeacherProfileContainer from './Components/TeacherProfile/TeacherProfileContainer';
+import GroupsContainer from './Components/Groups/GroupsContainer';
 
 
 
@@ -22,10 +23,11 @@ const App = (props) => {
       <NavBar />
       <div className='app-wrapper-content'>
 
-        <Route path='/teacher' render={() => <TeacherProfileContainer />} />
+        <Route path='/teacher/:t_id?' render={() => <TeacherProfileContainer />} />
         <Route path='/regStudent' render={() => <RegStudentContainer />} />
         <Route path='/regTeacher' render={() => <RegTeacherContainer />} />
         <Route path='/auth' render={() => <AuthContainer />} />
+        <Route path='/groups' render={() => <GroupsContainer />} />
         <Route path='/dialogs' render={() => <DialogsContainer />} />
         <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
         <Route path='/users' render={() => <UsersContainer />} />

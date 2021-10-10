@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-// import { setUserData } from '../../redux/google-auth-reduser';
-import TeacherProfile from './TeacherProfile';
+import Groups from './Groups';
 
 
 
@@ -25,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const TeacherProfileContainer = connect(mapStateToProps, mapDispatchToProps)(TeacherProfile)
+const GroupsContainer = connect(mapStateToProps, mapDispatchToProps)(Groups)
 
 
-export default TeacherProfileContainer
+export default GroupsContainer
