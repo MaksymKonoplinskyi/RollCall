@@ -1,9 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { getTeacherData, regTeacher } from '../../http/userAPI';
 
-// import s from './'
 const useValidation = (value, validations) => {
     const [isEmpty, setEmptyError] = useState(true)
     const [minLengthError, setMinLengthError] = useState(false)
@@ -79,30 +77,7 @@ const RegTeacherPage = (props) => {
     const department = useInput('ТЕ', { isEmpty: true })
     const position = useInput('Ст.Выкл', { isEmpty: true })
 
-    const regData1 = {
-        g_id: "1234567890",
-        firstName: firstName.value,
-        middleName: middleName.value,
-        lastName: lastName.value,
-        institute: institute.value,
-        faculty: faculty.value,
-        department: department.value,
-        position: position.value,
-        email: props.email,
-        role: "TEACHER",
-    }
-    // const regData2 = {
-    //     g_id: "123",
-    //     firstName: "adаasfae",
-    //     middleName: "ad",
-    //     lastName: "seвf",
-    //     institute: "sвf",
-    //     faculty: faculty.value,
-    //     department: "sd",
-    //     position: "sf",
-    //     email: "2.13",
-    //     role: "djа",
-    // }
+
     const regData = {
         g_id: props.g_id,
         firstName: firstName.value,
@@ -115,6 +90,19 @@ const RegTeacherPage = (props) => {
         email: props.email,
         role: "TEACHER",
     }
+    const regData1 = {
+        g_id: props.g_id,
+        firstName: firstName.value,
+        middleName: middleName.value,
+        lastName: lastName.value,
+        institute: institute.value,
+        faculty: faculty.value,
+        department: department.value,
+        position: position.value,
+        email: props.email,
+        role: "TEACHER",
+    }
+
 
     const click_regTeacher = async () => {
         try {
@@ -144,29 +132,8 @@ const RegTeacherPage = (props) => {
         }
     }
 
-    const click_get1 = async () => {
-        try {
-            axios
-                .get(`http://localhost:5000/api/teacher/data?g_id=${props.g_id}`)
-                .then(response => console.log(response.data))
-        } catch (e) {
-            alert(e.response.data.message)
-        }
-    }
 
 
-    // getTeacherData('100037699072885750750')
-
-    const click_post = async () => {
-        axios({
-            method: 'post',
-            url: 'http://localhost:5000/api/teacher/registration',
-            data: {
-                ...regData1
-            }
-        })
-            .then(response => console.log(response))
-    }
     return (
         <div>
 
@@ -204,20 +171,12 @@ const RegTeacherPage = (props) => {
                 <input onChange={(e) => position.onChange(e)} onBlur={(e) => position.onBlur(e)} value={position.value} name='position' type='text' placeholder='Посада' />
                 <br />
                 <br />
-                {/* {(email.isDirty && email.isEmpty) && <div style={{ color: 'red' }}>Поле не может быть пустым</div>}
-                {(email.isDirty && email.minLengthError) && <div style={{ color: 'red' }}>Не корректная длинна</div>}
-                <input onChange={(e) => email.onChange(e)} onBlur={(e) => email.onBlur(e)} value={email.value} name='email' type='text' placeholder='Ente your email...' />
-                <br />
-                <br />
-                {(password.isDirty && password.isEmpty) && <div style={{ color: 'red' }}>Поле не может быть пустым</div>}
-                {(password.isDirty && password.minLengthError) && <div style={{ color: 'red' }}>Не корректная длинна</div>}
-                <input onChange={(e) => password.onChange(e)} onBlur={(e) => password.onBlur(e)} value={password.value} name='password' type='password' placeholder='Ente your password...' /> */}
-
+               
                 <button disabled={!firstName.inputValid || !middleName.inputValid || !lastName.inputValid
                     || !institute.inputValid || !faculty.inputValid || !department.inputValid || !position.inputValid}
                     onClick={click_regTeacher} className="btn btn-primary" type='button'>Зарееструватись</button>
                 <button onClick={click_get} className="btn btn-primary" type='button'>get</button>
-                <button onClick={click_post} className="btn btn-primary" type='button'>post</button>
+                {/* <button onClick={click_post} className="btn btn-primary" type='button'>post</button> */}
             </form>
 
 
@@ -230,20 +189,6 @@ const RegTeacherPage = (props) => {
     )
 }
 
-// id, firstName, middleName, lastName, institute, faculty, department, position, email, role
-
-// const Teacher = sequelize.define('teacher', {
-//     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-//     firstName: { type: DataTypes.STRING, allowNull: true },
-//     middleName: { type: DataTypes.STRING, allowNull: true },
-//     lastName: { type: DataTypes.STRING, allowNull: true },
-//     //  groups: {type: DataTypes.STRING,},
-//     department: { type: DataTypes.STRING, },
-//     faculty: { type: DataTypes.STRING, },
-//     institute: { type: DataTypes.STRING, },
-//     email: { type: DataTypes.STRING, unique: true, },
-//     role: { type: DataTypes.STRING, defaultValue: 'TEACHER' },
-// })
 
 export default RegTeacherPage
 
