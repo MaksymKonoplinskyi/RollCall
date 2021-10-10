@@ -8,7 +8,8 @@ import useInput from '../../useInput';
 const CreateGroup = (props) => {
 
     const history = useHistory()
-    const [regError, setRegError] = useState(null)
+    const [regResult, setRegResult] = useState(null)
+    const [regResultCode, setRegResultCode] = useState(null)
 
     const groupName = useInput('КВ01', { isEmpty: true })
     const institute = useInput('КПИ', { isEmpty: true })
@@ -32,7 +33,8 @@ const CreateGroup = (props) => {
         try {
             const response = await regGroup(regData)
             console.log(response);
-
+            setRegResult(response.data.groupName)
+            setRegResultCode(response.status)
             // const responseData = await getAllGroup(props.g_id)
             // const userData = { ...responseData.data }
             // props.setUserData(userData)
@@ -40,8 +42,8 @@ const CreateGroup = (props) => {
             // console.log('Teacher registration successful, id=' + responseData.data.id);
             // history.push(`/teacher/${responseData.data.id}`)
         } catch (e) {
-            alert(e.response.data.message)
-            setRegError(e.response.data.message)
+            setRegResult(e.response.data.message)
+            setRegResultCode(e.response.status)
         }
     }
 
@@ -53,8 +55,8 @@ const CreateGroup = (props) => {
             console.log(response.data.id);
             // history.push(`/teacher/${response.data.id}`)
         } catch (e) {
-            alert(e.response.data.message)
-            setRegError(e.response.data.message)
+            setRegResult(e.response.data.message)
+            setRegResultCode(e.response.status)
         }
     }
 
@@ -98,7 +100,10 @@ const CreateGroup = (props) => {
 
 
             <div>
-                {(regError) && <div style={{ color: 'red' }}>Помилка реестрації:{regError}</div >}
+                {(regResultCode === 200) && <div style={{ color: 'green' }}>Группа {regResult} успішно зареестрована<br /></div >}
+                {(regResultCode === 404) && <div style={{ color: 'red' }}>Помилка реестрації:<br />{regResult}</div >}
+                {!(regResultCode === 404 || regResultCode === 200 || regResultCode === null)
+                    && <div style={{ color: 'red' }}>Невідома помилка реестрації:<br />{regResult}</div >}
             </div>
         </div >
     )
